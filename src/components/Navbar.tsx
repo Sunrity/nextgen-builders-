@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -64,24 +64,24 @@ const Navbar: React.FC = () => {
                 "
             >
                 {/* LOGO */}
-                <a
-                    href="/"
+                <Link
+                    to="/"
                     className="flex items-center space-x-2"
                     onClick={() => setActiveLink("/")}
                 >
                     <span className="text-[1.4rem] font-semibold tracking-tight text-gray-900 whitespace-nowrap">
                         Next<span className="text-blue-700">Gen</span> Builders
                     </span>
-                </a>
+                </Link>
 
                 {/* DESKTOP NAV LINKS */}
                 <div className="hidden md:flex items-center space-x-8 flex-shrink-0">
                     {navLinks.map((link) => {
                         const isActive = activeLink === link.href;
                         return (
-                            <a
+                            <Link
                                 key={link.name}
-                                href={link.href}
+                                to={link.href}
                                 onClick={() => setActiveLink(link.href)}
                                 className={`relative font-medium transition-colors duration-200 ${
                                 isActive ? "text-blue-700" : "text-gray-700 hover:text-blue-700"
@@ -95,7 +95,7 @@ const Navbar: React.FC = () => {
                                     animate={{ width: isActive ? "100%" : "0%" }}
                                     transition={{ duration: 0.3 }}
                                 />
-                            </a>
+                            </Link>
                         );
                     })}
                 </div>
