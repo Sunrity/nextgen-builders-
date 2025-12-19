@@ -126,39 +126,67 @@ const Navbar: React.FC = () => {
                 {isOpen && (
                     <motion.div
                         key="mobile-menu"
-                        initial={{ opacity: 0, y: -10 }}
+                        initial={{ opacity: 0, y: -8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
+                        exit={{ opacity: 0, y: -8 }}
                         transition={{ duration: 0.25 }}
-                        className="md:hidden bg-gradient-to-b from-white to-blue-200 border-t border-gray-200 shadow-sm w-full h-screen overflow-hidden"
+                        className="md:hidden fixed inset-0 bg-white z-50"
                     >
-                        <div className="flex flex-col space-y-4 px-6 py-5 w-full">
-                            {navLinks.map((link) => (
-                                <a
-                                    key={link.name}
-                                    href={link.href}
-                                    onClick={() => {
-                                        setActiveLink(link.href);
-                                        setIsOpen(false);
-                                    }}
-                                    className={`font-medium transition-colors ${
-                                        activeLink === link.href
-                                        ? "text-blue-700"
-                                        : "text-gray-700 hover:text-blue-700"
-                                    }`}
-                                >
-                                    {link.name}
-                                </a>
-                            ))}
+                        {/* HEADER WITH CLOSE BUTTON */}
+                        <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200">
+                            <span 
+                                className="text-[1.4rem] font-semibold tracking-tight text-gray-900 whitespace-nowrap"
+                            >
+                                Next<span className="text-blue-700">Gen</span> Builders
+                            </span>
+                            <button onClick={() => setIsOpen(false)}>
+                                <X size={26} className="text-gray-800" />
+                            </button>
+                        </div>
+
+                        {/* MENU LIST */}
+                        <div className="px-5 py-4 overflow-y-auto pb-32">
+                            <div className="flex flex-col divide-y divide-gray-100 border border-gray-200 rounded-xl bg-gray-50">
+                                {navLinks.map((link) => (
+                                    <Link
+                                        key={link.name}
+                                        to={link.href}
+                                        onClick={() => {
+                                            setActiveLink(link.href);
+                                            setIsOpen(false);
+                                        }}
+                                        className={`px-4 py-4 text-[16px] font-medium transition-colors ${
+                                            activeLink === link.href
+                                            ? "text-blue-600 bg-white"
+                                            : "text-gray-700 hover:bg-white hover:text-blue-600"
+                                        }`}
+                                    >
+                                        {link.name}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+
+
+                        {/* FIXED BOTTOM CTA BUTTON */}
+                        <div className="fixed bottom-0 left-0 w-full px-5 pb-6">
                             <a
                                 href="https://chat.whatsapp.com/JL6fsvqSshrAGbByW2K80Z"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-center px-5 py-2 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition"
+                                className="
+                                    block w-full text-center py-3 
+                                    bg-blue-700 text-white font-semibold 
+                                    rounded-xl
+                                    hover:bg-blue-800 
+                                    transition 
+                                    shadow-[0_6px_20px_rgba(59,130,246,0.45)]
+                                "
                             >
                                 Join Us
                             </a>
                         </div>
+
                     </motion.div>
                 )}
             </AnimatePresence>
