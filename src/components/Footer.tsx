@@ -24,14 +24,36 @@ const Footer = () => {
                                 <MapPin size={18} className="text-blue-400" />
                                 <span>Port Harcourt, Nigeria</span>
                             </li>
-                            <li className="flex items-center gap-3">
-                                <Phone size={18} className="text-blue-400" />
-                                <span>+234-813-902-3970</span>
+                            <li className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-50 transition cursor-pointer">
+                            <Phone size={18} className="text-blue-400 flex-shrink-0" />
+                            <a
+                                href="tel:+234-813-902-3970"
+                                className="text-blue-600 font-medium hover:underline"
+                            >
+                                +234-813-902-3970
+                            </a>
                             </li>
-                            <li className="flex items-center gap-3">
-                                <Mail size={18} className="text-blue-400" />
-                                <span>info@nextgenerationbuilders.org</span>
+                          
+                            <li className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-50 transition cursor-pointer">
+                            <Phone size={18} className="text-blue-400 flex-shrink-0" />
+                            <a
+                                href="tel:+2237013236152"
+                                className="text-blue-600 font-medium hover:underline"
+                            >
+                                +223-701-323-6152
+                            </a>
                             </li>
+
+                           <li>
+                            <a
+                                href="mailto:info@nextgenerationbuilders.org"
+                                className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-50 transition text-blue-600 font-medium no-underline"
+                            >
+                                <Mail size={18} className="text-blue-400 flex-shrink-0" />
+                                info@nextgenerationbuilders.org
+                            </a>
+                            </li>
+
                         </ul>
                     </div>
 
@@ -42,9 +64,15 @@ const Footer = () => {
                             <a href="#" className="hover:text-blue-400 transition-colors">
                                 <Facebook size={20} />
                             </a>
-                            <a href="#" className="hover:text-blue-400 transition-colors">
-                                <Instagram size={20} />
-                            </a>
+                           <a
+                            href="https://www.instagram.com/nextgenerationbuilders130925/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-600 hover:text-pink-500 transition-colors"
+                            aria-label="Instagram"
+                        >
+                            <Instagram size={20} />
+                        </a>
                             <a href="#" className="hover:text-blue-400 transition-colors">
                                 <Linkedin size={20} />
                             </a>
