@@ -5,8 +5,9 @@ import { toast } from "react-hot-toast";
 import emailjs from "@emailjs/browser";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone:"", gender:"", message: "" });
   const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,13 +24,21 @@ const Contact = () => {
     const templateParams = {
       name: formData.name,
       email: formData.email,
+      Phone: formData.phone,
+      gender: formData.gender,
       message: formData.message,
     };
 
     emailjs.send(serviceID, templateID, templateParams, publicKey)
       .then(() => {
         toast.success("Message sent successfully!");
-        setFormData({ name: "", email: "", message: "" });
+        setSent(true); // showing thank you message 
+        setFormData({ name: "", email: "", phone:"", gender:"", message: "" });
+
+        //Hide the message after 7 seconds
+        setTimeout(() =>{
+          setSent(false);
+        }, 7000); // 7000ms = 7 seconds
       })
       .catch((error) => {
         console.error("Email send error:", error);
@@ -94,6 +103,17 @@ const Contact = () => {
           </motion.div>
 
           {/* Contact Form */}
+          { sent ? ( 
+             <div className="bg-green-50 border border-green-200 rounded-2xl p-10 text-center">
+              <h3 className="text-2xl font-semibold text-green-700 mb-3">
+                ✅ Message Sent!
+              </h3>
+              <p className="text-gray-700">
+                Thank you for reaching out to Next Generation Builders.
+                We have received your message and will get back to you soon.
+              </p>
+            </div>
+            ) : (
           <motion.form
             onSubmit={handleSubmit}
             initial={{ opacity: 0, x: 30 }}
@@ -128,12 +148,44 @@ const Contact = () => {
             </div>
 
             <div>
+              <label className="block text-sm font-medium text-gray-800 mb-2">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="Enter your phone number"
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-800 mb-2">
+                Gender
+              </label>
+              <select
+                name="gender"
+                value={formData.gender}
+                onChange={handleChange}
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                required
+              >
+                <option value="">Select gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+            <div>
               <label className="block text-sm font-medium text-gray-800 mb-2">Message</label>
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Write your message..."
+               placeholder="Share your message, questions, or how you would like to grow with us..."
+
                 rows={5}
                 className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600 resize-none"
                 required
@@ -143,12 +195,13 @@ const Contact = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full sm:w-auto flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-lg font-medium transition-all"
+              className="w-full sm:w-auto flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-lg font-medium transition-all justify-center"
             >
               <Send className="w-4 h-4" />
               {loading ? "Sending..." : "Send Message"}
             </button>
           </motion.form>
+          )}
         </div>
       </div>
     </section>
