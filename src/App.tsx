@@ -10,8 +10,10 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
 import Programs from "./pages/Programs";
+// import AdminDashboard from "./pages/AdminDashboard";
 import Mentorship from "./pages/Mentorship";
 import Blog from "./pages/Blog";
+import AdminLogin from "./pages/AdminLogin";
 
 const queryClient = new QueryClient();
 
@@ -21,17 +23,20 @@ const App = () => (
             <Toaster />
             <Sonner />
             <BrowserRouter>
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/contact" element={<Contact /> } />
-                <Route path="/about" element={<About />} />
-                <Route path="/programs" element={<Programs />} />
-                <Route path="/mentorship" element={<Mentorship />} />
-                <Route path="/blog" element={<Blog />} />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-            <Footer />
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/programs" element={<Programs />} />
+                    <Route path="/mentorship" element={<Mentorship />} />
+                    <Route path="/blog" element={<Blog />} />
+                    {/* Admin login and dashboard routes */}
+                    <Route path="/admin-login" element={<AdminLogin />} />
+                    {/* <Route path="/admin" element={<AdminDashboard />} /> */}
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+                <Footer />
             </BrowserRouter>
         </TooltipProvider>
     </QueryClientProvider>
