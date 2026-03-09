@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../Mentorship.css";
+import "../mentorship.css";
 
 const REGISTRATION_END = new Date();
 REGISTRATION_END.setDate(REGISTRATION_END.getDate() + 30);
@@ -41,7 +41,8 @@ const Mentorship = () => {
   }, []);
 
   // ✏️ handle input
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
