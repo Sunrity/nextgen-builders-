@@ -10,7 +10,6 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
 import Programs from "./pages/Programs";
-// import AdminDashboard from "./pages/AdminDashboard";
 import Mentorship from "./pages/Mentorship";
 import Blog from "./pages/Blog";
 import AdminLogin from "./pages/AdminDashboard";
