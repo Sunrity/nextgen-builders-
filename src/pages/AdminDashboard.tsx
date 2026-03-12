@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../Admin.css";
+import "../admin.css";
 
 type Registration = {
   name: string;

@@ -6,6 +6,16 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto px-6 md:px-10">
                 <div className="flex flex-col md:flex-row items-start justify-start gap-10 md:gap-20">
                     {/* Brand Info */}
+                    <section className="sponsors-section">
+                        <h2 className="sponsors-title">Our Sponsors</h2>
+                        <p className="sponsors-sub">Next Generation Builders is proudly supported by:</p>
+                        <ul className="sponsors-list">
+                            <li className="sponsor">Rescaf</li>
+                            <li className="sponsor">Scitylana</li>
+                            <li className="sponsor">8cousins</li>
+                        </ul>
+                    </section>
+
                     <div className="col-span-2">
                         <h3 className="text-2xl font-semibold text-white mb-3">
                             Next Generation <span className="text-blue-400">Builders</span>
