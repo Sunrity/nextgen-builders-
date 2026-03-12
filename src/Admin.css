@@ -1,0 +1,45 @@
+.admin-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px;
+  font-family: Arial;
+}
+
+.admin-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.admin-count {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.admin-table th {
+  background: #0f172a;
+  color: white;
+}
+
+.delete-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: darkred;
+}

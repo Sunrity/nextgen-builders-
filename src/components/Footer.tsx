@@ -42,6 +42,17 @@ const Footer = () => {
                             </a>
                             </li>
 
+
+                            <li>
+                            <a
+                                href="mailto:info@nextgenerationbuilders.org"
+                                className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-50 transition text-blue-600 font-medium"
+                            >
+                                <Mail size={18} className="text-blue-400 flex-shrink-0" />
+                               nextgenerationbuilders4@gmail.com
+                            </a>
+                            </li>
+
                            <li>
                             <a
                                 href="mailto:info@nextgenerationbuilders.org"
@@ -51,7 +62,7 @@ const Footer = () => {
                                 info@nextgenerationbuilders.org
                             </a>
                             </li>
-
+                           
                         </ul>
                     </div>
 
