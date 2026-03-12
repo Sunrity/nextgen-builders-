@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import mentoringImage from "@/assets/mentoring-image.jpg";
 
+
 const Mentoring = () => {
     const programs = [
         {
@@ -184,15 +185,19 @@ const Mentoring = () => {
                         Ready to Take the Next Step?
                     </h3>
                     <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-blue-100">
-                        Enroll in our online mentoring today and be equipped to lead with
+                        Join us in our online mentoring today and be equipped to lead with
                         confidence, faith, and purpose.
                     </p>
-                    <Button
-                        variant="secondary"
+                    <a
+                        href="https://chat.whatsapp.com/JL6fsvqSshrAGbByW2K80Z"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="bg-white text-blue-700 hover:bg-blue-100 text-lg px-8 py-3 rounded-xl font-semibold"
                     >
-                        Enroll Now
-                    </Button>
+                        Join Us
+                    </a>
+
+
                 </motion.div>
             </div>
         </section>

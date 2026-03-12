@@ -13,7 +13,8 @@ import Programs from "./pages/Programs";
 // import AdminDashboard from "./pages/AdminDashboard";
 import Mentorship from "./pages/Mentorship";
 import Blog from "./pages/Blog";
-import AdminLogin from "./pages/AdminLogin";
+import AdminLogin from "./pages/AdminDashboard";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
@@ -32,7 +33,7 @@ const App = () => (
                     <Route path="/mentorship" element={<Mentorship />} />
                     <Route path="/blog" element={<Blog />} />
                     {/* Admin login and dashboard routes */}
-                    <Route path="/admin-login" element={<AdminLogin />} />
+                    <Route path="/AdminDashboard" element={<AdminDashboard />} />
                     {/* <Route path="/admin" element={<AdminDashboard />} /> */}
                     <Route path="*" element={<NotFound />} />
                 </Routes>
