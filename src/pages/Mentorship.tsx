@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../Mentorship.css"
+import "./Mentorship.css"
 
 const REGISTRATION_END = new Date();
 REGISTRATION_END.setDate(REGISTRATION_END.getDate() + 30);
