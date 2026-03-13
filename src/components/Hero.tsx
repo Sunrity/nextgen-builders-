@@ -1,19 +1,27 @@
-import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-image.jpg";
+// Hero.tsx
+import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import heroImage from "@/assets/hero-image.jpg"; // Make sure this file exists in src/assets/
 
-const Hero = () => {
+const Hero: React.FC = () => {
   const navigate = useNavigate();
 
   return (
     <section className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      
       {/* Background Image */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/40 to-transparent dark:from-black/70 dark:via-black/50 dark:to-transparent"></div>
+        <img
+          src={heroImage}
+          alt="Next Generation Builders Hero"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/40 to-transparent dark:from-black/70 dark:via-black/50 dark:to-transparent" />
       </div>
 
-      {/* Floating Accent Blur */}
+      {/* Floating Accent Blurs */}
       <div className="absolute top-1/4 left-1/3 w-72 h-72 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/4 right-1/3 w-72 h-72 bg-gradient-to-r from-indigo-400/10 to-blue-400/10 rounded-full blur-3xl"></div>
 
@@ -25,6 +33,8 @@ const Hero = () => {
         className="relative z-10 container mx-auto px-6 text-center"
       >
         <div className="w-full mx-auto">
+          
+          {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -37,6 +47,7 @@ const Hero = () => {
             </span>
           </motion.h1>
 
+          {/* Subtext */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -48,6 +59,7 @@ const Hero = () => {
             faith, and creativity to build companies and shape tomorrow.
           </motion.p>
 
+          {/* Action Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -71,20 +83,22 @@ const Hero = () => {
               Learn More
             </Button>
 
-            {/* Admin Page Button */}
-            {/* <Button
+            {/* Admin Page Button (Optional) */}
+            {/* 
+            <Button
               variant="outline"
               size="lg"
               onClick={() => navigate("/admin")}
               className="text-lg px-10 py-5 rounded-2xl border-indigo-500 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-100/60 dark:hover:bg-indigo-800/50 font-medium transition-all duration-300"
             >
               Admin Page
-            </Button> */}
+            </Button> 
+            */}
           </motion.div>
         </div>
       </motion.div>
 
-      {/* Elegant Scroll Indicator */}
+      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 8, 0] }}
