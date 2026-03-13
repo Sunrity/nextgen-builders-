@@ -1,7 +1,7 @@
 // About.tsx
 import React from "react";
 import { motion } from "framer-motion";
-import aboutBg from "@/assets/about-bg-BX_ziFlK.jpeg";
+import aboutBg from "@/assets/about-bg.jpeg";
 
 const About: React.FC = () => {
   return (
