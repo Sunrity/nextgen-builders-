@@ -146,38 +146,6 @@ const Contact = () => {
                 required
               />
             </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-800 mb-2">
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="Enter your phone number"
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                required
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-800 mb-2">
-                Gender
-              </label>
-              <select
-                name="gender"
-                value={formData.gender}
-                onChange={handleChange}
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                required
-              >
-                <option value="">Select gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
-            </div>
             <div>
               <label className="block text-sm font-medium text-gray-800 mb-2">Message</label>
               <textarea

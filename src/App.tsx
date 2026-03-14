@@ -9,10 +9,11 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 // Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Partners from "./pages/partners";
 
 // Lazy-loaded Pages
 const Index = lazy(() => import("./pages/Index"));
-const About = lazy(() => import("./pages/About"));
+const Who = lazy(() => import("./pages/Who"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Programs = lazy(() => import("./pages/Programs"));
 const Community = lazy(() => import("./pages/Community"));
@@ -39,14 +40,15 @@ const App: React.FC = () => {
                     <Suspense fallback={<div className="loading">Loading...</div>}>
                         <Routes>
                             <Route path="/" element={<Index />} />
-                            <Route path="/about" element={<About />} />
+                            <Route path="/Who" element={<Who />} />
                             <Route path="/contact" element={<Contact />} />
                             <Route path="/programs" element={<Programs />} />
                             <Route path="/community-guide" element={<Community />} />
                             <Route path="/mentorship" element={<Mentorship />} />
                             <Route path="/blog" element={<Blog />} />
                             <Route path="/admindashboard" element={<AdminDashboard />} />
-
+                            {/* Partners Page */}
+                            <Route path="/partners" element={<Partners />} />
                             {/* Fallback for unmatched routes */}
                             <Route path="*" element={<NotFound />} />
                         </Routes>

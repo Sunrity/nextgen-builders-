@@ -22,7 +22,7 @@ const About = () => {
                         transition={{ duration: 1 }}
                         className="text-4xl md:text-6xl font-bold md:font-extrabold mb-6"
                     >
-                        About <span className="text-blue-300">Next Generation Builders</span>
+                     <span className="text-blue-300">Next Generation Builders</span>
                     </motion.h1>
 
                     <motion.p
