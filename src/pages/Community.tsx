@@ -20,7 +20,7 @@ const communityRules = [
 const Community = () => {
   return (
     <div className="container mx-auto px-6 py-12 space-y-12">
-      <h1 className="text-4xl sm:text-5xl font-bold mb-8 text-center text-gray-800">
+      <h1 className="text-4xl sm:text-5xl font-bold mt-20 mb-8 text-center mari text-gray-800">
         Next Generation Builders Community Guide
       </h1>
 
