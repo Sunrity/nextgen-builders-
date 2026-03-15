@@ -38,18 +38,25 @@ const Mentoring = () => {
 
   const mentors = [
     {
-      name: "Francis",
-      role: "Tech Coach",
-      image: "/mentors/Francis.jpg",
-      description:
-        "Helping young developers build practical tech skills and grow in the digital world.",
-    },
-    {
       name: "Michael",
       role: "Leadership Mentor",
       image: "/mentors/Michael.jpg",
       description:
         "Equipping young leaders with the principles needed to lead teams and build organizations.",
+    },
+    {
+      name: "Felix",
+      role: "Mindset Coach",
+      image: "/mentors/Felix.jpg",
+      description:
+        "Helping young people develop the mindset needed to succeed in life and leadership.",
+    },
+    {
+      name: "Francis",
+      role: "Tech Coach",
+      image: "/mentors/Francis.jpg",
+      description:
+        "Helping young developers build practical tech skills and grow in the digital world.",
     },
     {
       name: "Samuel",
@@ -59,11 +66,11 @@ const Mentoring = () => {
         "Teaching financial discipline, wealth creation, and smart money management.",
     },
     {
-      name: "Felix",
-      role: "Mindset Coach",
-      image: "/mentors/Felix.jpg",
+      name: "Princewill",
+      role: "Innovation Mentor",
+      image: "/mentors/Princewill.jpg",
       description:
-        "Helping young people develop the mindset needed to succeed in life and leadership.",
+        "Guiding young minds to think creatively, solve problems, and innovate for the future.",
     },
   ];
 
@@ -71,8 +78,8 @@ const Mentoring = () => {
     {
       name: "Jackson",
       role: "Web Developer",
-      image: "/mentors/Jackson.png",
-      text: "The mentoring community helped me grow both professionally and personally.",
+      image: "/testimonials/Jackson.jpg",
+      text: "The mentoring community helped me grow personally and professionally and helped me gain practical tech skills in a growing digital world.",
     },
     {
       name: "Success",
@@ -97,7 +104,6 @@ const Mentoring = () => {
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             Online <span className="text-blue-600">Mentoring</span>
           </h2>
-
           <p className="text-gray-600 max-w-2xl mx-auto">
             Our mentoring program equips young people with leadership,
             mindset development, financial wisdom, and purpose-driven growth.
@@ -131,50 +137,52 @@ const Mentoring = () => {
           <h3 className="text-2xl md:text-3xl font-bold text-center mb-10">
             Meet Our Mentors
           </h3>
-
-          <div className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-2 touch-pan-x">
-            {mentors.map((mentor, index) => (
-              <Card
-                key={index}
-                className="snap-center flex-shrink-0 w-52 sm:w-60 p-5 text-center rounded-2xl shadow-md hover:shadow-xl transition duration-300"
-              >
-                <img
-                  src={mentor.image}
-                  alt={mentor.name}
-                  className="w-20 h-20 rounded-full mx-auto mb-3 object-cover border-2 border-blue-100"
-                />
-                <h4 className="font-semibold text-lg">{mentor.name}</h4>
-                <p className="text-blue-600 text-sm mb-2">{mentor.role}</p>
-                <p className="text-gray-600 text-sm">{mentor.description}</p>
-              </Card>
-            ))}
+          <div className="flex justify-center">
+            <div className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-2 touch-pan-x">
+              {mentors.map((mentor, index) => (
+                <Card
+                  key={index}
+                  className="snap-center flex-shrink-0 w-56 sm:w-60 p-5 text-center rounded-2xl shadow-md hover:shadow-xl transition duration-300"
+                >
+                  <img
+                    src={mentor.image}
+                    alt={mentor.name}
+                    className="w-24 h-24 rounded-full mx-auto mb-3 object-cover border-2 border-blue-100"
+                  />
+                  <h4 className="font-semibold text-lg">{mentor.name}</h4>
+                  <p className="text-blue-600 text-sm mb-2">{mentor.role}</p>
+                  <p className="text-gray-600 text-sm">{mentor.description}</p>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Testimonials */}
         <div className="mb-20">
           <h3 className="text-2xl md:text-3xl font-bold text-center mb-10">
-            What Our Members Say
+           Success Stories
           </h3>
-
-          <div className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-2 touch-pan-x">
-            {testimonials.map((item, index) => (
-              <Card
-                key={index}
-                className="snap-center flex-shrink-0 w-60 sm:w-72 p-6 text-center rounded-2xl shadow-md hover:shadow-xl transition duration-300"
-              >
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-16 h-16 rounded-full mx-auto mb-3 object-cover border-2 border-blue-100"
-                />
-                <p className="text-gray-600 mb-3 text-sm">
-                  "{item.text}"
-                </p>
-                <h4 className="font-semibold">{item.name}</h4>
-                <p className="text-gray-500 text-sm">{item.role}</p>
-              </Card>
-            ))}
+          <div className="flex justify-center">
+            <div className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-2 touch-pan-x">
+              {testimonials.map((item, index) => (
+                <Card
+                  key={index}
+                  className="snap-center flex-shrink-0 w-64 sm:w-72 p-6 text-center rounded-2xl shadow-md hover:shadow-xl transition duration-300"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-16 h-16 rounded-full mx-auto mb-3 object-cover border-2 border-blue-100"
+                  />
+                  <p className="text-gray-600 mb-3 text-sm">
+                    "{item.text}"
+                  </p>
+                  <h4 className="font-semibold">{item.name}</h4>
+                  <p className="text-gray-500 text-sm">{item.role}</p>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
 
