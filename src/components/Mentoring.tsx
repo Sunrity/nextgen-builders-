@@ -74,26 +74,38 @@ const Mentoring = () => {
     },
   ];
 
-  const testimonials = [
-    {
-      name: "Jackson",
-      role: "Web Developer",
-      image: "/testimonials/Jackson.jpg",
-      text: "The mentoring community helped me grow personally and professionally and helped me gain practical tech skills in a growing digital world.",
-    },
-    {
-      name: "Success",
-      role: "Entrepreneur",
-      image: "/mentors/Success.png",
-      text: "This mentorship program changed my mindset and helped me start my first business.",
-    },
-    {
-      name: "Esther",
-      role: "Student Leader",
-      image: "/mentors/Esther.png",
-      text: "I gained confidence in leadership and learned how to work with teams effectively.",
-    },
-  ];
+ const testimonials = [
+   {
+    name: "Esther",
+    role: "Graphic Designer",
+    image: "/testimonials/Esther.jpg",
+    text: "I enhanced my design skills, learned to collaborate effectively, and gained the confidence to lead creative projects.",
+  },
+  {
+    name: "Jackson",
+    role: "Web Developer",
+    image: "/testimonials/Jackson.jpg",
+    text: "This mentorship helped me grow as a developer, sharpen my coding skills, and gain real-world experience in building web applications.",
+  },
+  {
+    name: "Success",
+    role: "Student",
+    image: "/testimonials/Success.jpg",
+    text: "Through this program, I developed a growth mindset and learned practical strategies to start my first business with confidence.",
+  },
+  // {
+  //   name: "Amina",
+  //   role: "Aspiring Designer",
+  //   image: "/mentors/Amina.png",
+  //   text: "The mentorship guided me to refine my design abilities and gave me the courage to start working on my own creative projects.",
+  // },
+  {
+    name: "Rion",
+    role: "Entrepreneur",
+    image: "/testimonials/Rion.jpg",
+    text: "This program shifted my mindset from scarcity to abundance, helping me approach business opportunities with a wealth-driven perspective into the tech world and beyond."
+  },
+];
 
   return (
     <section className="py-20 bg-gradient-to-b from-blue-50 via-white to-blue-50">
@@ -176,7 +188,7 @@ const Mentoring = () => {
                     className="w-16 h-16 rounded-full mx-auto mb-3 object-cover border-2 border-blue-100"
                   />
                   <p className="text-gray-600 mb-3 text-sm">
-                    "{item.text}"
+                    {item.text}
                   </p>
                   <h4 className="font-semibold">{item.name}</h4>
                   <p className="text-gray-500 text-sm">{item.role}</p>
