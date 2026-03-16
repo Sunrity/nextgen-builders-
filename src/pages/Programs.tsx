@@ -1,160 +1,117 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Code2, PenTool, Camera, Brain, MonitorSmartphone } from "lucide-react";
+import { Code2, PenTool, Camera, MonitorSmartphone } from "lucide-react";
 
-// Example program images
 import webdevImg from "../assets/webdev.jpg";
 import uiuxImg from "../assets/uiux.jpg";
 import videoImg from "../assets/video.jpg";
 import graphicsImg from "../assets/graphics.jpg";
 
 const programs = [
-  {
-    title: "Website Development",
-    icon: <Code2 className="w-7 h-7 text-blue-600" />,
-    description:
-      "Learn how to build responsive, modern websites from scratch using HTML, CSS, JavaScript, and React. Become a confident frontend or full-stack developer.",
-    image: webdevImg,
-  },
-  {
-    title: "UI/UX Design",
-    icon: <MonitorSmartphone className="w-7 h-7 text-blue-600" />,
-    description:
-      "Master the art of crafting beautiful and user-friendly interfaces. Learn Figma, design thinking, prototyping, and real-world design collaboration.",
-    image: uiuxImg,
-  },
-  {
-    title: "Videography & Editing",
-    icon: <Camera className="w-7 h-7 text-blue-600" />,
-    description:
-      "Discover how to shoot, edit, and produce stunning videos that tell stories. Learn camera handling, lighting, and professional editing techniques.",
-    image: videoImg,
-  },
-  {
-    title: "Graphic Design",
-    icon: <PenTool className="w-7 h-7 text-blue-600" />,
-    description:
-      "Unlock your creativity with design tools like Canva, Photoshop, and Illustrator. Learn branding, visual communication, and content creation.",
-    image: graphicsImg,
-  },
+  { title: "Website Development", icon: <Code2 className="w-7 h-7 text-blue-600" />, description: "Learn how to build responsive modern websites using HTML, CSS, JavaScript and React.", image: webdevImg },
+  { title: "UI/UX Design", icon: <MonitorSmartphone className="w-7 h-7 text-blue-600" />, description: "Learn how to design beautiful and user-friendly interfaces using Figma and modern design thinking.", image: uiuxImg },
+  { title: "Videography & Editing", icon: <Camera className="w-7 h-7 text-blue-600" />, description: "Learn how to shoot, edit and produce professional videos using modern storytelling techniques.", image: videoImg },
+  { title: "Graphic Design", icon: <PenTool className="w-7 h-7 text-blue-600" />, description: "Master visual communication using Canva, Photoshop and Illustrator.", image: graphicsImg },
 ];
 
 const mindsetVideos = [
-  {
-    title: "Mindset & Focus Class",
-    videoUrl: "https://www.youtube.com/embed/-nGlRyGxsB0",
-  },
-  {
-    title: "Goal Setting & Productivity",
-    videoUrl: "https://www.youtube.com/embed/OmjO3z1pRtw",
-  },
-  {
-    title: "Leadership & Teamwork",
-    videoUrl: "https://www.youtube.com/embed/psHmjKQxdWo",
-  },
+  { title: "Mindset & Focus Class", videoUrl: "https://www.youtube.com/embed/-nGlRyGxsB0" },
+  { title: "Goal Setting & Productivity", videoUrl: "https://www.youtube.com/embed/OmjO3z1pRtw" },
+  { title: "Leadership & Teamwork", videoUrl: "https://www.youtube.com/embed/psHmjKQxdWo" },
 ];
 
+const liveMeetingLink = "https://meet.google.com/your-meeting-link";
+
+// Calculate next Saturday at 8 PM
+const getNextSaturdayMeeting = () => {
+  const now = new Date();
+  const nextSaturday = new Date();
+
+  const day = now.getDay();
+  const daysUntilSaturday = (6 - day + 7) % 7 || 7; // Saturday = 6
+
+  nextSaturday.setDate(now.getDate() + daysUntilSaturday);
+  nextSaturday.setHours(20, 0, 0, 0); // 8 PM
+  return nextSaturday;
+};
+
 const Programs = () => {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [meetingStatus, setMeetingStatus] = useState("upcoming"); // "upcoming" | "live" | "ended"
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date();
+      const meetingStart = getNextSaturdayMeeting();
+      const meetingEnd = new Date(meetingStart.getTime() + 90 * 60 * 1000); // 1h30m meeting
+      const appreciationEnd = new Date(meetingEnd.getTime() + 30 * 60 * 1000); // 30 min appreciation
+
+      // Determine meeting status
+      if (now >= meetingStart && now < meetingEnd) setMeetingStatus("live");
+      else if (now >= meetingEnd && now < appreciationEnd) setMeetingStatus("ended");
+      else setMeetingStatus("upcoming");
+
+      // Countdown to next meeting
+      const nextMeeting = now >= appreciationEnd ? getNextSaturdayMeeting() : meetingStart;
+      const diff = nextMeeting - now;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      setTimeLeft({ days, hours, minutes, seconds });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="bg-gray-50 py-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-5 mt-5"
-          >
-            Our Programs
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
-          >
-            Explore our creative and leadership programs designed to equip the next
-            generation with technical skills, creative confidence, and a purpose-driven mindset.
-          </motion.p>
+          <motion.h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5">Our Programs</motion.h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Explore our creative and leadership programs designed to equip the next generation with technical skills and a strong mindset.
+          </p>
         </div>
 
-        {/* Mindset Videos Section - Horizontal Scroll */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
-            Mindset & Focus Classes
-          </h3>
+        {/* Live Meeting */}
+        <div className="bg-white rounded-3xl shadow-lg p-10 mb-16 text-center">
+          <h3 className="text-2xl font-bold text-gray-900 mb-2">Weekly Mindset Meeting</h3>
+          <p className="text-gray-600 mb-6">Every Saturday at 8:00 PM</p>
 
-          <div className="flex space-x-6 overflow-x-auto scrollbar-thin scrollbar-thumb-blue-600 scrollbar-track-gray-200 py-2 px-4">
-            {mindsetVideos.map((video, index) => (
-              <div
-                key={index}
-                className="min-w-[280px] bg-white rounded-3xl shadow-lg p-6 flex-shrink-0 flex flex-col items-center"
-              >
-                <div className="w-full aspect-video mb-4">
-                  <iframe
-                    className="w-full h-full rounded-xl"
-                    src={video.videoUrl}
-                    title={video.title}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-                <h4 className="text-xl font-semibold text-gray-900 mb-2 text-center">
-                  {video.title}
-                </h4>
-                <a
-                  href="https://chat.whatsapp.com/JL6fsvqSshrAGbByW2K80Z"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-700 font-medium hover:text-blue-900 transition"
-                >
-                  Join Us →
-                </a>
+          {meetingStatus === "upcoming" && (
+            <div>
+              <p className="text-gray-500 mb-4">Next meeting starts in:</p>
+              <div className="flex justify-center gap-6 mb-6">
+                <div><p className="text-3xl font-bold text-blue-600">{timeLeft.days}</p><span className="text-gray-500 text-sm">Days</span></div>
+                <div><p className="text-3xl font-bold text-blue-600">{timeLeft.hours}</p><span className="text-gray-500 text-sm">Hours</span></div>
+                <div><p className="text-3xl font-bold text-blue-600">{timeLeft.minutes}</p><span className="text-gray-500 text-sm">Minutes</span></div>
+                <div><p className="text-3xl font-bold text-blue-600">{timeLeft.seconds}</p><span className="text-gray-500 text-sm">Seconds</span></div>
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
+          )}
 
-        {/* Program Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {programs.map((program, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group"
-            >
-              <div className="relative w-full h-56 overflow-hidden">
-                <img
-                  src={program.image}
-                  alt={program.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+          {meetingStatus === "live" && (
+            <>
+              <div className="flex justify-center items-center gap-2 mb-6">
+                <span className="w-3 h-3 bg-red-600 rounded-full animate-pulse"></span>
+                <span className="text-red-600 font-semibold">LIVE NOW</span>
               </div>
-              <div className="p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 bg-blue-100 rounded-xl">{program.icon}</div>
-                  <h3 className="text-xl font-semibold text-gray-900">{program.title}</h3>
-                </div>
-                <p className="text-gray-600 leading-relaxed mb-6">{program.description}</p>
-                <a
-                  href="https://wa.me/2348139023970"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block text-blue-700 font-medium hover:text-blue-900 transition"
-                >
-                  Learn More →
-                </a>
-              </div>
-            </motion.div>
-          ))}
+              <a href={liveMeetingLink} target="_blank" rel="noopener noreferrer" className="bg-green-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-green-700 transition shadow-lg">
+                Join Live Mindset Meeting 🚀
+              </a>
+            </>
+          )}
+
+          {meetingStatus === "ended" && (
+            <div>
+              <div className="text-green-600 text-2xl font-semibold mb-4">🙏 Thank You Builders!</div>
+              <p className="text-gray-600 mb-6 max-w-xl mx-auto">
+                Thank you for joining today's mindset meeting. Your commitment to building yourself is inspiring.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </section>

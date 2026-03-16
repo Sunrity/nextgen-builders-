@@ -17,7 +17,7 @@ const Who = lazy(() => import("./pages/Who"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Programs = lazy(() => import("./pages/Programs"));
 const Community = lazy(() => import("./pages/Community"));
-const Mentorship = lazy(() => import("./pages/Mentorship"));
+const Skill = lazy(() => import("./pages/Skill"));
 const Blog = lazy(() => import("./pages/Blog"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -44,11 +44,11 @@ const App: React.FC = () => {
                             <Route path="/contact" element={<Contact />} />
                             <Route path="/programs" element={<Programs />} />
                             <Route path="/community-guide" element={<Community />} />
-                            <Route path="/mentorship" element={<Mentorship />} />
+                            <Route path="/skills" element={<Skill />} />
                             <Route path="/blog" element={<Blog />} />
                             <Route path="/admindashboard" element={<AdminDashboard />} />
                             {/* Partners Page */}
-                            <Route path="/partners" element={<Partners />} />
+                            <Route path="/Partners" element={<Partners />} />
                             {/* Fallback for unmatched routes */}
                             <Route path="*" element={<NotFound />} />
                         </Routes>
