@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.2, duration: 1 }}
             className="text-4xl md:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-tight"
           >
-            <span className="block mb-3">Mentoring Young Leaders</span>
+            <span className="block mb-3 mt-6">Mentoring Young Leaders</span>
             <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 bg-clip-text text-transparent">
               To Build the Future
             </span>

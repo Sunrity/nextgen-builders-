@@ -2,21 +2,18 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
-import logo from "../assets/logo.jpg"
-// import { Dropdown } from "react-day-picker";
 
 // Navigation links
 const navLinks = [
   { name: "Home", href: "/" },
   {
-    name:"About",
+    name: "About",
     dropdown: [
-      {name: "Who we are", href: "/Who"},
+      { name: "Who we are", href: "/Who" },
       { name: "Contact", href: "/contact" },
       { name: "Blog", href: "/blog" },
-
-    ]   
- },
+    ],
+  },
   {
     name: "Community",
     dropdown: [
@@ -25,12 +22,10 @@ const navLinks = [
       { name: "Community Guide", href: "/community-guide" },
     ],
   },
-  { 
+  {
     name: "Partners",
-    dropdown: [ 
-     { name: "partners", href: "/partners" },
-    ], 
-    }, // Added Partners
+    dropdown: [{ name: "Partners", href: "/partners" }],
+  },
 ];
 
 const Navbar: React.FC = () => {
@@ -48,13 +43,11 @@ const Navbar: React.FC = () => {
   return (
     <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <Link to="/" className="flex items-center">
-          <img
-            src={logo}// 👈 put your logo inside public folder
-            alt="Next Generation Builders Logo"
-           className="h-20 sm:h-12 md:h-16 lg:h-20 w-auto object-contain"
-          />
-      </Link>
+        
+        {/* Site Name instead of logo */}
+        <Link to="/" className="text-2xl font-bold text-gray-900">
+          Next <span className="text-blue-700">Gen</span> Builders
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">
