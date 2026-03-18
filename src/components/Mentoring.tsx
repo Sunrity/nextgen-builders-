@@ -40,72 +40,75 @@ const Mentoring = () => {
     {
       name: "Michael",
       role: "Leadership Mentor",
+      location: "Austria, Central Europe",
       image: "/mentors/Michael.jpg",
       description:
         "Equipping young leaders with the principles needed to lead teams and build organizations.",
     },
     {
-      name: "Felix",
+      name: "Felix kpormon",
       role: "Mindset Coach",
+      location: "Port-harcourt, Nigeria",
       image: "/mentors/Felix.jpg",
       description:
         "Helping young people develop the mindset needed to succeed in life and leadership.",
     },
     {
-      name: "Francis",
+      name: "Francis Labi",
       role: "Tech Coach",
+      location: "Los Augeles USA",
       image: "/mentors/Francis.jpg",
       description:
         "Helping young developers build practical tech skills and grow in the digital world.",
     },
     {
-      name: "Samuel",
+      name: "Samuel Nsoedo",
       role: "Financial Coach",
+      location: "London, United Kingdom",
       image: "/mentors/Samuel.jpg",
       description:
         "Teaching financial discipline, wealth creation, and smart money management.",
     },
     {
-      name: "Princewill",
+      name: "Dr. Princewill Opubo",
       role: "Innovation Mentor",
+      location: "Port-harcourt, Nigeria",
       image: "/mentors/Princewill.jpg",
       description:
         "Guiding young minds to think creatively, solve problems, and innovate for the future.",
     },
   ];
 
- const testimonials = [
-   {
-    name: "Esther",
-    role: "Graphic Designer",
-    image: "/testimonials/Esther.jpg",
-    text: "I enhanced my design skills, learned to collaborate effectively, and gained the confidence to lead creative projects.",
-  },
-  {
-    name: "Jackson",
-    role: "Web Developer",
-    image: "/testimonials/Jackson.jpg",
-    text: "This mentorship helped me grow as a developer, sharpen my coding skills, and gain real-world experience in building web applications.",
-  },
-  {
-    name: "Success",
-    role: "Student",
-    image: "/testimonials/Success.jpg",
-    text: "Through this program, I developed a growth mindset and learned practical strategies to start my first business with confidence.",
-  },
-  // {
-  //   name: "Amina",
-  //   role: "Aspiring Designer",
-  //   image: "/mentors/Amina.png",
-  //   text: "The mentorship guided me to refine my design abilities and gave me the courage to start working on my own creative projects.",
-  // },
-  {
-    name: "Rion",
-    role: "Entrepreneur",
-    image: "/testimonials/Rion.jpg",
-    text: "This program shifted my mindset from scarcity to abundance, helping me approach business opportunities with a wealth-driven perspective into the tech world and beyond."
-  },
-];
+  const testimonials = [
+    {
+      name: "Esther",
+      role: "Graphic Designer",
+      location: "Lagos, Nigeria",
+      image: "/testimonials/Esther.jpg",
+      text: "I enhanced my design skills, learned to collaborate effectively, and gained the confidence to lead creative projects.",
+    },
+    {
+      name: "Jackson Ndifreke",
+      role: "Web Developer",
+      location: "Port-harcourt, Nigeria",
+      image: "/testimonials/Jackson.jpg",
+      text: "This mentorship helped me grow as a developer, sharpen my coding skills, and gain real-world experience in building web applications.",
+    },
+    {
+      name: "Success",
+      role: "Student",
+      location: "Port-harcourt, Nigeria",
+      image: "/testimonials/Success.jpg",
+      text: "Through this program, I developed a growth mindset and learned practical strategies to start my first business with confidence.",
+    },
+    {
+      name: "Marion Sakwa",
+      role: "Entrepreneur",
+      location: "Nairobi, Kenya",
+      image: "/testimonials/Rion.jpg",
+      text: "This program shifted my mindset from scarcity to abundance, helping me approach business opportunities with a wealth-driven perspective into the tech world and beyond.",
+    },
+  ];
 
   return (
     <section className="py-20 bg-gradient-to-b from-blue-50 via-white to-blue-50">
@@ -162,7 +165,8 @@ const Mentoring = () => {
                     className="w-24 h-24 rounded-full mx-auto mb-3 object-cover border-2 border-blue-100"
                   />
                   <h4 className="font-semibold text-lg">{mentor.name}</h4>
-                  <p className="text-blue-600 text-sm mb-2">{mentor.role}</p>
+                  <p className="text-blue-600 text-sm mb-1">{mentor.role}</p>
+                  <p className="text-blue-600 text-sm mb-2">{mentor.location}</p>
                   <p className="text-gray-600 text-sm">{mentor.description}</p>
                 </Card>
               ))}
@@ -191,7 +195,8 @@ const Mentoring = () => {
                     {item.text}
                   </p>
                   <h4 className="font-semibold">{item.name}</h4>
-                  <p className="text-gray-500 text-sm">{item.role}</p>
+                  <p className="text-blue-500 text-sm">{item.role}</p>
+                  <p className="text-blue-600 text-sm">{item.location}</p>
                 </Card>
               ))}
             </div>
