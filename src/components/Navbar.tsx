@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
+import logo from "../assets/logo.jpg"
 // import { Dropdown } from "react-day-picker";
 
 // Navigation links
@@ -47,10 +48,13 @@ const Navbar: React.FC = () => {
   return (
     <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <Link to="/" className="text-xl font-bold text-gray-900">
-          Next <span className="text-blue-700">Gen</span> Builders
-        </Link>
+      <Link to="/" className="flex items-center">
+          <img
+            src={logo}// 👈 put your logo inside public folder
+            alt="Next Generation Builders Logo"
+           className="h-20 sm:h-12 md:h-16 lg:h-20 w-auto object-contain"
+          />
+      </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">

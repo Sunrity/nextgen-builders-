@@ -81,7 +81,7 @@ const Mentoring = () => {
 
   const testimonials = [
     {
-      name: "Esther",
+      name: "Folorunsho Esther",
       role: "Graphic Designer",
       location: "Lagos, Nigeria",
       image: "/testimonials/Esther.jpg",
@@ -95,8 +95,8 @@ const Mentoring = () => {
       text: "This mentorship helped me grow as a developer, sharpen my coding skills, and gain real-world experience in building web applications.",
     },
     {
-      name: "Success",
-      role: "Student",
+      name: "Omereji Success Sunday",
+      role: "UI/UX Designer",
       location: "Port-harcourt, Nigeria",
       image: "/testimonials/Success.jpg",
       text: "Through this program, I developed a growth mindset and learned practical strategies to start my first business with confidence.",

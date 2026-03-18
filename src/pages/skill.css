@@ -289,10 +289,21 @@ input:focus, select:focus, textarea:focus{
   z-index: 1001;
 }
 /* Hide toggle on large screens */
-@media(min-width: 769px) {
-  .sidebar-toggle {
-    display: none;
-  }
+@media(min-width: 369px) {
+  .sidebar-toggle{
+  position: fixed;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:12px 16px;
+  border-radius:50%;
+  cursor:pointer;
+  z-index:1001;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
 }
 
 /* Main container */

@@ -11,7 +11,7 @@ const About: React.FC = () => {
       <img
         src={aboutBg}
         alt="Next Generation Builders"
-        className="absolute inset-0 w-full h-full object-cover opacity-20"
+        className="absolute inset-0 w-full h-full object-cover opacity-80"
       />
 
       {/* Overlay Gradient */}

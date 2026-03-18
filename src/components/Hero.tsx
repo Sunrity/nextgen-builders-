@@ -3,7 +3,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-image.jpg"; // Make sure this file exists in src/assets/
+// import heroImage from "@/assets/hero-image.jpg"; // Make sure this file exists in src/assets/
+import heroImage from "@/assets/esther-hero.jpg"
 
 const Hero: React.FC = () => {
   const navigate = useNavigate();
