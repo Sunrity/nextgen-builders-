@@ -53,7 +53,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1 }}
-            className="mt-6 text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+            className="mt-6 text-lg md:text-xl text-black-600 dark:text-black-300 max-w-3xl mx-auto leading-relaxed"
           >
             Next Generation Builders transforms purpose-driven young minds
             into visionary leaders — equipped with mindset, financial wisdom,

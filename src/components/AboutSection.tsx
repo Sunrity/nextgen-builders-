@@ -34,9 +34,8 @@ const About: React.FC = () => {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-gray-300 max-w-xl leading-relaxed">
-            Our mission is to empower young builders with the mindset,
-            discipline, and faith to shape the future — through innovation,
-            skills, and community-driven growth.
+            Our mission is To equip and empower individuals with the mindset, skills, and values needed to lead with purpose, build sustainable solutions, and create lasting impact.
+            We are dedicated to nurturing unity, inspiring collaboration, and raising a generation of builders committed to transforming Africa by shining their light and working together for a greater future.
           </p>
         </motion.div>
 
@@ -51,17 +50,14 @@ const About: React.FC = () => {
           <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl shadow-2xl p-10">
             <h3 className="text-3xl font-bold mb-4 text-white">Our Vision</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              To raise visionary leaders who create value, build sustainable
-              companies, and transform nations through integrity, innovation,
-              and collaboration.
+              To raise visionary leaders who create value, build sustainable companies, and transform nations through integrity, innovation, and collaboration.
+              We are committed to building Africa by bringing people together to shine the light within us—unlocking potential, fostering unity, and driving collective growth across the continent.
             </p>
 
             <div className="border-t border-white/10 pt-6">
               <h4 className="text-2xl font-semibold mb-2 text-white">Our Aim</h4>
               <p className="text-gray-400 leading-relaxed">
-                We’re not just training minds — we’re building world changers.
-                Builders who are confident in purpose, strong in values, and
-                skilled in execution.
+                We’re not just training minds — we’re building world changers. Builders who are confident in purpose, strong in values, and skilled in execution, ready to impact Africa and the world at large.
               </p>
             </div>
           </div>

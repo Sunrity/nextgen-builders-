@@ -9,28 +9,28 @@ const Mentoring = () => {
     {
       title: "Leadership Development",
       description:
-        "Intensive training on leadership principles, vision casting, and team building.",
+        "Intensive training focused on leadership principles, vision casting, and effective team building.",
       duration: "12 weeks",
       format: "Online + Workshops",
     },
     {
       title: "Financial Literacy",
       description:
-        "Comprehensive training on money management, investing, and business building.",
+        "Comprehensive guidance on money management, investing, and building sustainable businesses.",
       duration: "8 weeks",
       format: "Online Sessions",
     },
     {
       title: "Mindset Mastery",
       description:
-        "Transform your thinking patterns and develop a success-oriented mindset.",
+        "Transform your thinking patterns and develop a mindset designed for growth and success.",
       duration: "6 weeks",
       format: "Online Coaching",
     },
     {
       title: "Faith & Purpose",
       description:
-        "Discover your divine purpose and align your goals with biblical principles.",
+        "Discover your purpose and align your goals with strong values and principles.",
       duration: "10 weeks",
       format: "Online + Community",
     },
@@ -40,26 +40,26 @@ const Mentoring = () => {
     {
       name: "Michael",
       role: "Leadership Mentor",
-      location: "Austria, Central Europe",
+      location: "Austria, Europe",
       image: "/mentors/Michael.jpg",
       description:
-        "Equipping young leaders with the principles needed to lead teams and build organizations.",
+        "Equipping young leaders with the principles needed to lead teams and build impactful organizations.",
     },
     {
-      name: "Felix kpormon",
+      name: "Felix Kpormon",
       role: "Mindset Coach",
-      location: "Port-harcourt, Nigeria",
+      location: "Port Harcourt, Nigeria",
       image: "/mentors/Felix.jpg",
       description:
-        "Helping young people develop the mindset needed to succeed in life and leadership.",
+        "Helping young people develop the mindset required to succeed in life and leadership.",
     },
     {
       name: "Francis Labi",
       role: "Tech Coach",
-      location: "Los Augeles USA",
+      location: "Los Angeles, USA",
       image: "/mentors/Francis.jpg",
       description:
-        "Helping young developers build practical tech skills and grow in the digital world.",
+        "Empowering developers with practical tech skills to thrive in the digital world.",
     },
     {
       name: "Samuel Nsoedo",
@@ -72,7 +72,7 @@ const Mentoring = () => {
     {
       name: "Dr. Princewill Opubo",
       role: "Innovation Mentor",
-      location: "Port-harcourt, Nigeria",
+      location: "Port Harcourt, Nigeria",
       image: "/mentors/Princewill.jpg",
       description:
         "Guiding young minds to think creatively, solve problems, and innovate for the future.",
@@ -90,23 +90,23 @@ const Mentoring = () => {
     {
       name: "Jackson Ndifreke",
       role: "Web Developer",
-      location: "Port-harcourt, Nigeria",
+      location: "Port Harcourt, Nigeria",
       image: "/testimonials/Jackson.jpg",
-      text: "This mentorship helped me grow as a developer, sharpen my coding skills, and gain real-world experience in building web applications.",
+      text: "This mentorship helped me grow as a developer, sharpen my coding skills, and gain real-world experience building web applications.",
     },
     {
       name: "Omereji Success Sunday",
       role: "UI/UX Designer",
-      location: "Port-harcourt, Nigeria",
+      location: "Port Harcourt, Nigeria",
       image: "/testimonials/Success.jpg",
-      text: "Through this program, I developed a growth mindset and learned practical strategies to start my first business with confidence.",
+      text: "I developed a growth mindset and learned practical strategies to confidently start my first business.",
     },
     {
       name: "Marion Sakwa",
       role: "Entrepreneur",
       location: "Nairobi, Kenya",
       image: "/testimonials/Rion.jpg",
-      text: "This program shifted my mindset from scarcity to abundance, helping me approach business opportunities with a wealth-driven perspective into the tech world and beyond.",
+      text: "This program shifted my mindset from scarcity to abundance, helping me approach opportunities with confidence and clarity.",
     },
   ];
 
@@ -117,43 +117,18 @@ const Mentoring = () => {
         {/* Heading */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Online <span className="text-blue-600">Mentoring</span>
+            Meet Our <span className="text-blue-600">Mentors</span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Our mentoring program equips young people with leadership,
-            mindset development, financial wisdom, and purpose-driven growth.
+            Our mentorship program equips young people with leadership skills,
+            financial wisdom, mindset development, and purpose-driven growth.
           </p>
-        </div>
-
-        {/* Programs */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {programs.map((program, index) => (
-            <Card
-              key={index}
-              className="rounded-xl shadow-md hover:shadow-xl transition duration-300"
-            >
-              <CardHeader>
-                <CardTitle>{program.title}</CardTitle>
-                <p className="text-sm text-blue-600">
-                  {program.duration} • {program.format}
-                </p>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 text-sm">
-                  {program.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
         </div>
 
         {/* Mentors */}
         <div className="mb-20">
-          <h3 className="text-2xl md:text-3xl font-bold text-center mb-10">
-            Meet Our Mentors
-          </h3>
           <div className="flex justify-center">
-            <div className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-2 touch-pan-x">
+            <div className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-2">
               {mentors.map((mentor, index) => (
                 <Card
                   key={index}
@@ -165,8 +140,8 @@ const Mentoring = () => {
                     className="w-24 h-24 rounded-full mx-auto mb-3 object-cover border-2 border-blue-100"
                   />
                   <h4 className="font-semibold text-lg">{mentor.name}</h4>
-                  <p className="text-blue-600 text-sm mb-1">{mentor.role}</p>
-                  <p className="text-blue-600 text-sm mb-2">{mentor.location}</p>
+                  <p className="text-blue-600 text-sm">{mentor.role}</p>
+                  <p className="text-blue-500 text-sm mb-2">{mentor.location}</p>
                   <p className="text-gray-600 text-sm">{mentor.description}</p>
                 </Card>
               ))}
@@ -177,10 +152,10 @@ const Mentoring = () => {
         {/* Testimonials */}
         <div className="mb-20">
           <h3 className="text-2xl md:text-3xl font-bold text-center mb-10">
-           Success Stories
+            Success Stories
           </h3>
           <div className="flex justify-center">
-            <div className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-2 touch-pan-x">
+            <div className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-2">
               {testimonials.map((item, index) => (
                 <Card
                   key={index}
@@ -191,9 +166,7 @@ const Mentoring = () => {
                     alt={item.name}
                     className="w-16 h-16 rounded-full mx-auto mb-3 object-cover border-2 border-blue-100"
                   />
-                  <p className="text-gray-600 mb-3 text-sm">
-                    {item.text}
-                  </p>
+                  <p className="text-gray-600 mb-3 text-sm">{item.text}</p>
                   <h4 className="font-semibold">{item.name}</h4>
                   <p className="text-blue-500 text-sm">{item.role}</p>
                   <p className="text-blue-600 text-sm">{item.location}</p>
@@ -210,7 +183,7 @@ const Mentoring = () => {
           </h3>
           <p className="max-w-xl mx-auto mb-6">
             Join our mentorship program and begin your journey toward leadership,
-            financial wisdom, and purpose-driven success.
+            financial growth, and purpose-driven success.
           </p>
           <a
             href="https://chat.whatsapp.com/JL6fsvqSshrAGbByW2K80Z"
