@@ -1,59 +1,104 @@
-/* RESET */
-* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
-
-/* LAYOUT */
-.layout { display:flex; min-height:100vh; margin-top: 80px; }
-
-.main{
- 
+/* Layout */
+.layout {
+  font-family: 'Inter', sans-serif;
+  position: relative;
 }
-/* SIDEBAR */
-.sidebar { width:260px; background:#0f172a; color:white; padding:50px 20px; height:100vh; overflow-y:auto; transition:0.3s; }
-.sidebar-title { margin-bottom:20px; text-align: center; font-family: 'Times New Roman', Times, serif; font-size: xx-large;}
 
-/* COURSE */
-.course-list { list-style:none; }
-.course-item { margin-bottom:10px; }
-.course-row { display:flex; justify-content:space-between; align-items:center; }
-.course-button { width:100%; background:transparent; border:none; color:white; padding:12px; text-align:left; cursor:pointer; border-radius:8px; }
-.course-button:hover { background: rgba(255,255,255,0.1); }
+/* Header */
+.header h1, .header h2 {
+  margin: 0;
+}
 
-/* ARROW */
-.arrow { cursor:pointer; font-size:14px; transition: transform 0.3s ease; }
-.arrow.rotate { transform: rotate(180deg); }
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 280px;
+  height: 100%;
+  background: #f1f5f9;
+  padding: 20px;
+  overflow-y: auto;
+  transition: left 0.3s ease;
+  z-index: 100;
+  border-right: 1px solid #ddd;
+}
+.sidebar.open {
+  left: 0;
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 50;
+}
 
-/* TOPICS */
-.topics-list { padding-left:15px; margin-top:5px; }
-.topic { font-size:0.85rem; color:#cbd5f5; padding:4px 0; }
+/* Sidebar title */
+.sidebar-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
 
-/* MAIN */
-.main { flex:1; padding:30px; text-align: center;
-  text-transform: capitalize;
-  font-family: sans-serif;
-  font-weight: 600; }
-.subtitle { margin-bottom:10px; color:#555; }
-.timer { margin-bottom:20px; }
+/* Courses */
+.course-list {
+  list-style: none;
+  padding: 0;
+}
+.course-item {
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 10px;
+  background: #fff;
+}
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.course-name {
+  font-weight: 600;
+}
+.topics-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+.topics-list {
+  margin-top: 8px;
+  list-style: none;
+  padding-left: 10px;
+}
+.topic {
+  font-size: 0.85rem;
+  padding: 2px 0;
+}
+.apply-btn {
+  background: #1d4ed8;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.apply-btn:hover {
+  background: #2563eb;
+}
 
-/* FORM */
-.form { display:grid; gap:10px; max-width:400px; margin-bottom:40px; margin: auto; }
-input { padding:10px; border:1px solid #ccc; border-radius:5px; width:100%; }
-button.form-submit { padding:12px; background:#2563eb; color:white; border:none; cursor:pointer; border-radius:5px; }
-button.form-submit:hover { background:#1e40af; }
+/* Instructors Grid */
+.instructors-grid img {
+  object-fit: cover;
+}
 
-/* INSTRUCTORS */
-.instructors { margin-top:50px; }
-.instructors h2 { margin-bottom:20px; }
-.instructors-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px; }
-.instructor-card { background:#f1f5f9; padding:15px; text-align:center; border-radius:10px; transition:0.2s; }
-.instructor-card:hover { transform:translateY(-5px); }
-.instructor-image { width:100%; height:180px; object-fit:cover; border-radius:8px; }
-
-/* MOBILE */
-.menu-btn { display:none; margin-bottom:15px; font-size:24px; background:none; border:none; cursor:pointer; z-index:1100; position:fixed; top:20px; left:20px; color:#0f172a; }
-.overlay { position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1050; }
-
-@media(max-width:768px) {
-  .sidebar { position:fixed; left:-100%; top:0; z-index:1090; height:100%; transition:left 0.3s ease; }
-  .sidebar.open { left:0; }
-  .menu-btn { display:block; }
+/* Google Form Section */
+.google-form-section iframe {
+  max-width: 100%;
+  border-radius: 12px;
 }

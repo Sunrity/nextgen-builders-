@@ -1,84 +1,155 @@
-// pages/community-guide.jsx
 import React from "react";
+import { motion } from "framer-motion";
+import {
+  Users,
+  Target,
+  Eye,
+  ShieldCheck,
+  Heart,
+  Lightbulb,
+  Handshake,
+  MessageCircle,
+  Star
+} from "lucide-react";
 
-const communityValues = [
-  "Inclusivity & Equity – Every member is valued, regardless of background.",
-  "Innovation & Excellence – Encourage creativity and strive for the best.",
-  "Impact & Measurability – Focus on results that make a real difference.",
-  "Sustainability & Responsibility – Think long-term and act ethically.",
-  "Resilience & Faith – Stay persistent, motivated, and hopeful even through challenges."
+const values = [
+  { icon: <Users />, text: "Inclusivity & Equity – Every member is valued." },
+  { icon: <Lightbulb />, text: "Innovation & Excellence – Creativity and high standards." },
+  { icon: <Target />, text: "Impact & Measurability – Focus on real results." },
+  { icon: <ShieldCheck />, text: "Sustainability & Responsibility – Think long-term." },
+  { icon: <Heart />, text: "Resilience & Faith – Stay strong and hopeful." },
 ];
 
-const communityRules = [
-  "Respect Everyone – No discrimination, harassment, or offensive language.",
-  "Stay Positive & Encouraging – Support each other’s growth.",
-  "Contribute Meaningfully – Share knowledge and participate actively.",
-  "Protect Privacy – Don't share personal information of others without permission.",
-  "No Spam or Promotion – Only share relevant resources aligned with our purpose."
+const rules = [
+  "Respect everyone at all times",
+  "Stay positive and encouraging",
+  "Contribute meaningfully",
+  "Protect privacy",
+  "No spam or irrelevant promotion",
 ];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0 },
+};
+
+const Section = ({ title, icon, children, bg = "bg-white" }) => (
+  <motion.section
+    variants={fadeUp}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true }}
+    transition={{ duration: 0.6 }}
+    className={`${bg} p-6 rounded-2xl shadow-md`}
+  >
+    <div className="flex items-center gap-3 mb-4 text-blue-700">
+      {icon}
+      <h2 className="text-2xl font-semibold">{title}</h2>
+    </div>
+    <div className="text-gray-700 leading-relaxed">{children}</div>
+  </motion.section>
+);
 
 const Community = () => {
   return (
-    <div className="container mx-auto px-6 py-12 space-y-12">
-      <h1 className="text-4xl sm:text-5xl font-bold mt-20 mb-8 text-center mari text-gray-800">
-        Next Generation Builders Community Guide
-      </h1>
+    <div className="max-w-7xl mx-auto px-6 py-16 space-y-12">
 
-      {/* Purpose Section */}
-      <section className="bg-blue-50 p-6 rounded-xl shadow-md">
-        <h2 className="text-2xl font-semibold mb-4 text-blue-700">Purpose of Our Community</h2>
-        <p className="text-gray-700 leading-relaxed">
-          Welcome to Next Generation Builders! Our community exists to empower African youth through mindset development, leadership training, and skill-building initiatives. 
-          We aim to create a space where members support each other, share knowledge, and take actionable steps toward personal and collective growth.
+      {/* HERO */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center mt-16"
+      >
+        <h1 className="text-4xl md:text-6xl font-bold text-gray-900">
+          Community Guide
+        </h1>
+        <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+          Welcome to Next Generation Builders — where purpose meets growth and leaders are built.
         </p>
-      </section>
+      </motion.div>
 
-      {/* Core Values */}
-      <section className="bg-white p-6 rounded-xl shadow-md">
-        <h2 className="text-2xl font-semibold mb-4 text-blue-700">Core Values</h2>
-        <ul className="list-disc list-inside space-y-2 text-gray-700">
-          {communityValues.map((value, index) => (
-            <li key={index} className="hover:text-blue-700 transition-colors">{value}</li>
+      {/* WELCOME */}
+      <Section title="Welcome" icon={<Users />}>
+        Next Generation Builders is a movement of young individuals committed to building a better future.
+        This is where purpose is discovered, potential is developed, and greatness is built.
+      </Section>
+
+      {/* PURPOSE */}
+      <Section title="Our Purpose" icon={<Target />} bg="bg-blue-50">
+        We empower African youth through mindset development, leadership training, and skill-building.
+        We create opportunities for growth, collaboration, and impact.
+      </Section>
+
+      {/* VISION + MISSION GRID */}
+      <div className="grid md:grid-cols-2 gap-8">
+        <Section title="Our Vision" icon={<Eye />}>
+          To raise a generation of empowered, skilled, and disciplined leaders who create lasting impact.
+        </Section>
+
+        <Section title="Our Mission" icon={<Handshake />} bg="bg-blue-50">
+          <ul className="list-disc list-inside space-y-2">
+            <li>Develop valuable skills</li>
+            <li>Build strong character</li>
+            <li>Connect like-minded individuals</li>
+            <li>Encourage action and growth</li>
+          </ul>
+        </Section>
+      </div>
+
+      {/* VALUES */}
+      <motion.section
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        className="bg-white p-6 rounded-2xl shadow-md"
+      >
+        <h2 className="text-2xl font-semibold mb-6 text-blue-700">
+          Core Values
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-4">
+          {values.map((val, i) => (
+            <div key={i} className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+              <div className="text-blue-600">{val.icon}</div>
+              <p className="text-gray-700">{val.text}</p>
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* RULES */}
+      <Section title="Community Rules" icon={<ShieldCheck />}>
+        <ul className="list-disc list-inside space-y-2">
+          {rules.map((rule, i) => (
+            <li key={i}>{rule}</li>
           ))}
         </ul>
-      </section>
+      </Section>
 
-      {/* Community Rules */}
-      <section className="bg-white p-6 rounded-xl shadow-md">
-        <h2 className="text-2xl font-semibold mb-4 text-blue-700">Community Rules</h2>
-        <ul className="list-disc list-inside space-y-2 text-gray-700">
-          {communityRules.map((rule, index) => (
-            <li key={index} className="hover:text-blue-700 transition-colors">{rule}</li>
-          ))}
-        </ul>
-      </section>
+      {/* ENGAGEMENT */}
+      <Section title="Engagement & Participation" icon={<MessageCircle />} bg="bg-blue-50">
+        Introduce yourself, join discussions, attend events, and collaborate on projects.
+        Growth happens through participation.
+      </Section>
 
-      {/* Engagement */}
-      <section className="bg-blue-50 p-6 rounded-xl shadow-md">
-        <h2 className="text-2xl font-semibold mb-4 text-blue-700">Engagement & Participation</h2>
-        <p className="text-gray-700 leading-relaxed">
-          Introduce yourself, join discussions, attend events, and collaborate on projects. Active participation helps you grow and contributes to the community’s success.
+      {/* LEADERSHIP */}
+      <Section title="Leadership & Growth" icon={<Star />}>
+        Members are encouraged to lead, mentor, and build. Leadership is about impact, not titles.
+      </Section>
+
+      {/* FINAL CTA */}
+      <motion.section
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        className="bg-blue-700 text-white p-10 rounded-2xl text-center"
+      >
+        <h2 className="text-3xl font-bold mb-4">You Are a Builder</h2>
+        <p className="text-lg">
+          This is your time to grow, lead, and create impact.  
+          Don’t wait. Don’t doubt. Start building.
         </p>
-      </section>
+      </motion.section>
 
-      {/* Support */}
-      <section className="bg-blue-50 p-6 rounded-xl shadow-md">
-        <h2 className="text-2xl font-semibold mb-4 text-blue-700">Support & Guidance</h2>
-        <p className="text-gray-700 leading-relaxed">
-          Seek mentorship, access resources, and report conflicts to moderators. We're here to help you succeed.
-        </p>
-      </section>
-
-      {/* Getting Started */}
-      <section className="bg-white p-6 rounded-xl shadow-md">
-        <h2 className="text-2xl font-semibold mb-4 text-blue-700">Getting Started</h2>
-        <ol className="list-decimal list-inside space-y-2 text-gray-700">
-          <li>Introduce yourself in the community forum.</li>
-          <li>Read and follow this guide.</li>
-          <li>Attend your first community event.</li>
-          <li>Start sharing your skills and learning from others!</li>
-        </ol>
-      </section>
     </div>
   );
 };

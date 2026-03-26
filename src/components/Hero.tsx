@@ -70,10 +70,10 @@ const Hero: React.FC = () => {
           >
             <Button
               size="lg"
-              onClick={() => navigate("/contact")}
+              onClick={() => navigate("/skills")}
               className="text-lg px-10 py-5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-500 hover:from-indigo-500 hover:to-blue-600 text-white font-semibold shadow-lg shadow-blue-500/20 transition-all duration-300 hover:scale-[1.03]"
             >
-              Start Your Journey
+              Apply for Scholarship
             </Button>
 
             <Button
@@ -82,7 +82,7 @@ const Hero: React.FC = () => {
               onClick={() => navigate("/about")}
               className="text-lg px-10 py-5 rounded-2xl border-gray-400/60 text-gray-800 dark:text-gray-100 hover:bg-gray-100/60 dark:hover:bg-gray-800/50 font-medium transition-all duration-300"
             >
-              Learn More
+              Learn more
             </Button>
 
             {/* Admin Page Button (Optional) */}
@@ -101,7 +101,7 @@ const Hero: React.FC = () => {
       </motion.div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
@@ -110,7 +110,7 @@ const Hero: React.FC = () => {
         <div className="w-[26px] h-[42px] border-2 border-gray-400/40 rounded-full flex justify-center p-1.5">
           <div className="w-1.5 h-3 bg-gray-400/80 rounded-full animate-bounce"></div>
         </div>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 };
