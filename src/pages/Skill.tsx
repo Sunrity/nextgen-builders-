@@ -18,7 +18,7 @@ const courses = [
 /* INSTRUCTORS */
 const instructors = [
   { name: "Amb. Prince Igwe C.", course: "Graphics Designer", location: "Port Harcourt, Nigeria", image: "/Instructors/Prince-Igwe.jpg" },
-  { name: "Suka Lazarus", course: "Web Developer", location: "Nairobi, Kenya", image: "" },
+  { name: "Suka Lazarus", course: "Web Developer", location: "Nairobi, Kenya", image: "Instructors/suka.jpeg" },
   { name: "Jerry Zhiya", course: "Web Developer", location: "Abuja, Nigeria", image: "/Instructors/jerry.jpg" },
   { name: "Esther", course: "Data Analytics", location: "Abuja, Nigeria", image: "" },
 ];
@@ -54,7 +54,7 @@ const PremiumSkillPage = () => {
       <header className="header text-center py-16 bg-blue-50">
         <h1 className="text-4xl font-bold mb-2">Next Generation Builders</h1>
         <h2 className="text-2xl font-semibold mb-2">Next Gen Tech Skills Scholarship</h2>
-        <p className="text-gray-700 mb-4">Learn Data Science & Web Development, Level Up Your Skills</p>
+        <p className="text-gray-700 mb-4">Learn Data Analytics & Web Development, Level Up Your Skills</p>
         <p className="text-gray-800 font-semibold mb-6">
           Registration ends in: <span className="text-blue-700">{timeLeft}</span>
         </p>
@@ -116,7 +116,7 @@ const PremiumSkillPage = () => {
               <img
                 src={ins.image || "https://via.placeholder.com/150"}
                 alt={ins.name}
-                className="instructor-image w-full h-40 object-cover rounded-lg mb-3"
+                className="instructor-image w-full h-50 object-cover rounded-lg mb-3"
               />
               <h3 className="font-semibold">{ins.name}</h3>
               <p className="text-gray-600">{ins.course}</p>

@@ -1,104 +1,163 @@
-/* Layout */
+/* ===== Layout ===== */
 .layout {
   font-family: 'Inter', sans-serif;
   position: relative;
+  color: #1f2937;
 }
 
-/* Header */
-.header h1, .header h2 {
+/* ===== Header ===== */
+.header h1,
+.header h2 {
   margin: 0;
+  line-height: 1.2;
 }
 
-/* Sidebar */
+/* ===== Sidebar ===== */
 .sidebar {
   position: fixed;
   top: 0;
-  left: -300px;
-  width: 280px;
+  left: -320px;
+  width: 300px;
   height: 100%;
-  background: #f1f5f9;
-  padding: 20px;
+  background: #f8fafc;
+  padding: 24px 18px;
   overflow-y: auto;
-  transition: left 0.3s ease;
+  transition: left 0.35s ease;
   z-index: 100;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid #e5e7eb;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05);
 }
+
 .sidebar.open {
   left: 0;
 }
+
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
   z-index: 50;
 }
 
-/* Sidebar title */
+/* ===== Sidebar Title ===== */
 .sidebar-title {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   text-align: center;
+  color: #111827;
 }
 
-/* Courses */
+/* ===== Courses ===== */
 .course-list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
+
 .course-item {
   margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 10px;
-  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 12px;
+  background: #ffffff;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
 }
+
+.course-item:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
 .course-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .course-name {
   font-weight: 600;
+  font-size: 0.95rem;
+  color: #111827;
 }
+
 .topics-btn {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 0.9rem;
-  color: #1d4ed8;
+  font-size: 0.85rem;
+  color: #2563eb;
   font-weight: 600;
+  transition: color 0.2s ease;
 }
+
+.topics-btn:hover {
+  color: #1d4ed8;
+}
+
 .topics-list {
-  margin-top: 8px;
+  margin-top: 10px;
   list-style: none;
   padding-left: 10px;
+  border-left: 2px solid #e5e7eb;
 }
+
 .topic {
   font-size: 0.85rem;
-  padding: 2px 0;
+  padding: 3px 0;
+  color: #4b5563;
 }
+
+/* ===== Apply Button ===== */
 .apply-btn {
-  background: #1d4ed8;
+  background: #2563eb;
   color: #fff;
   border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 7px 14px;
+  border-radius: 8px;
   font-size: 0.85rem;
   cursor: pointer;
-  transition: background 0.2s ease;
+  margin-top: 8px;
+  transition: all 0.25s ease;
 }
+
 .apply-btn:hover {
-  background: #2563eb;
+  background: #1d4ed8;
+  transform: translateY(-1px);
 }
 
-/* Instructors Grid */
+/* ===== Instructors Grid ===== */
 .instructors-grid img {
+  width: 100%;
+  height: 220px;
   object-fit: cover;
+  object-position: top; /* Keeps faces visible */
+  border-radius: 14px;
+  transition: transform 0.3s ease;
 }
 
-/* Google Form Section */
+.instructor-card:hover img {
+  transform: scale(1.05);
+}
+
+
+/* ===== Google Form Section ===== */
+.google-form-section {
+  display: flex;           /* Enable flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  flex-direction: column;  /* Stack elements vertically if you have headings */
+  padding: 4rem 1rem;
+  text-align: center;
+  min-height: 60vh;        /* Ensures vertical centering space */
+}
+
 .google-form-section iframe {
+  width: 640px;            /* Or max-width: 100% for responsiveness */
   max-width: 100%;
-  border-radius: 12px;
+  height: 1344px;          /* Keep your form height */
+  border-radius: 14px;
+  border: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }

@@ -38,7 +38,7 @@ const Mentoring = () => {
 
   const mentors = [
     {
-      name: "Michael",
+      name: "Michael Ogu",
       role: "Leadership Mentor",
       location: "Austria, Europe",
       image: "/mentors/Michael.jpg",
