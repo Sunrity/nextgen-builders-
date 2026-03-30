@@ -44,18 +44,10 @@ const Navbar: React.FC = () => {
     <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         
-        {/* logo */}
-      <Link to="/" className="flex items-center space-x-2">
-        {/* <img 
-          src="/logo/logo.jpeg" 
-          alt="Next Generation Builders Logo" 
-          className="h-10 w-10 object-contain"
-        /> */}
-        <span className="text-xl font-bold text-gray-900">
+        {/* Site Name instead of logo */}
+        <Link to="/" className="text-2xl font-bold text-gray-900">
           Next <span className="text-blue-700">Gen</span> Builders
-        </span>
-      </Link>
-
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">

@@ -1,44 +1,17 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 
 const Mentoring = () => {
-  const programs = [
-    {
-      title: "Leadership Development",
-      description:
-        "Intensive training focused on leadership principles, vision casting, and effective team building.",
-      duration: "12 weeks",
-      format: "Online + Workshops",
-    },
-    {
-      title: "Financial Literacy",
-      description:
-        "Comprehensive guidance on money management, investing, and building sustainable businesses.",
-      duration: "8 weeks",
-      format: "Online Sessions",
-    },
-    {
-      title: "Mindset Mastery",
-      description:
-        "Transform your thinking patterns and develop a mindset designed for growth and success.",
-      duration: "6 weeks",
-      format: "Online Coaching",
-    },
-    {
-      title: "Faith & Purpose",
-      description:
-        "Discover your purpose and align your goals with strong values and principles.",
-      duration: "10 weeks",
-      format: "Online + Community",
-    },
-  ];
+  const [openMentorForm, setOpenMentorForm] = useState(false);
 
+  /* ===================== MENTORS ===================== */
   const mentors = [
     {
-      name: "Michael Ogu",
+      name: "Michael",
       role: "Leadership Mentor",
       location: "Austria, Europe",
       image: "/mentors/Michael.jpg",
@@ -79,34 +52,31 @@ const Mentoring = () => {
     },
   ];
 
-  const testimonials = [
+  /* ===================== MENTEES ===================== */
+  const mentees = [
     {
       name: "Folorunsho Esther",
       role: "Graphic Designer",
       location: "Lagos, Nigeria",
       image: "/testimonials/Esther.jpg",
-      text: "I enhanced my design skills, learned to collaborate effectively, and gained the confidence to lead creative projects.",
     },
     {
       name: "Jackson Ndifreke",
       role: "Web Developer",
       location: "Port Harcourt, Nigeria",
       image: "/testimonials/Jackson.jpg",
-      text: "This mentorship helped me grow as a developer, sharpen my coding skills, and gain real-world experience building web applications.",
     },
     {
       name: "Omereji Success Sunday",
       role: "UI/UX Designer",
       location: "Port Harcourt, Nigeria",
       image: "/testimonials/Success.jpg",
-      text: "I developed a growth mindset and learned practical strategies to confidently start my first business.",
     },
     {
       name: "Marion Sakwa",
       role: "Entrepreneur",
       location: "Nairobi, Kenya",
       image: "/testimonials/Rion.jpg",
-      text: "This program shifted my mindset from scarcity to abundance, helping me approach opportunities with confidence and clarity.",
     },
   ];
 
@@ -114,30 +84,26 @@ const Mentoring = () => {
     <section className="py-20 bg-gradient-to-b from-blue-50 via-white to-blue-50">
       <div className="max-w-7xl mx-auto px-4">
 
-        {/* Heading */}
+        {/* ===================== HEADING ===================== */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             Meet Our <span className="text-blue-600">Mentors</span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Our mentorship program equips young people with leadership skills,
-            financial wisdom, mindset development, and purpose-driven growth.
+            We are building leaders through mentorship, skills, mindset, and purpose-driven growth.
           </p>
         </div>
 
-        {/* Mentors */}
-        <div className="mb-20">
+        {/* ===================== MENTORS ===================== */}
+        <div className="mb-12">
           <div className="flex justify-center">
-            <div className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-2">
+            <div className="flex gap-6 overflow-x-auto pb-4 px-2">
               {mentors.map((mentor, index) => (
-                <Card
-                  key={index}
-                  className="snap-center flex-shrink-0 w-56 sm:w-60 p-5 text-center rounded-2xl shadow-md hover:shadow-xl transition duration-300"
-                >
+                <Card key={index} className="w-60 p-5 text-center rounded-2xl shadow-md hover:shadow-xl transition">
                   <img
                     src={mentor.image}
                     alt={mentor.name}
-                    className="w-24 h-24 rounded-full mx-auto mb-3 object-cover border-2 border-blue-100"
+                    className="w-24 h-24 rounded-full mx-auto mb-3 object-cover"
                   />
                   <h4 className="font-semibold text-lg">{mentor.name}</h4>
                   <p className="text-blue-600 text-sm">{mentor.role}</p>
@@ -147,58 +113,94 @@ const Mentoring = () => {
               ))}
             </div>
           </div>
+
+          {/* Become Mentor Button */}
+          <div className="flex justify-center mt-8">
+            <Button
+              onClick={() => setOpenMentorForm(true)}
+              className="bg-blue-700 text-white px-6 py-3 text-lg rounded-lg shadow-lg hover:bg-blue-800"
+            >
+              Become a Mentor
+            </Button>
+          </div>
         </div>
 
-        {/* Testimonials */}
+        {/* ===================== MENTEES ===================== */}
         <div className="mb-20">
           <h3 className="text-2xl md:text-3xl font-bold text-center mb-10">
-            Success Stories
+            Our Mentees
           </h3>
+
           <div className="flex justify-center">
-            <div className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-2">
-              {testimonials.map((item, index) => (
-                <Card
-                  key={index}
-                  className="snap-center flex-shrink-0 w-64 sm:w-72 p-6 text-center rounded-2xl shadow-md hover:shadow-xl transition duration-300"
-                >
+            <div className="flex gap-6 overflow-x-auto pb-4 px-2">
+              {mentees.map((mentee, index) => (
+                <Card key={index} className="w-56 p-5 text-center rounded-2xl shadow-md hover:shadow-xl transition">
                   <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-16 h-16 rounded-full mx-auto mb-3 object-cover border-2 border-blue-100"
+                    src={mentee.image}
+                    alt={mentee.name}
+                    className="w-20 h-20 rounded-full mx-auto mb-3 object-cover"
                   />
-                  <p className="text-gray-600 mb-3 text-sm">{item.text}</p>
-                  <h4 className="font-semibold">{item.name}</h4>
-                  <p className="text-blue-500 text-sm">{item.role}</p>
-                  <p className="text-blue-600 text-sm">{item.location}</p>
+                  <h4 className="font-semibold">{mentee.name}</h4>
+                  <p className="text-blue-600 text-sm">{mentee.role}</p>
+                  <p className="text-gray-500 text-sm">{mentee.location}</p>
                 </Card>
               ))}
             </div>
           </div>
+
+          {/* TEXT + CTA */}
+          <div className="text-center mt-10 max-w-2xl mx-auto">
+            <p className="text-gray-600 mb-6">
+              Join our mentorship program and begin your journey toward leadership,
+              financial growth, and purpose-driven success. Learn from experienced mentors,
+              gain practical skills, and become the leader you were created to be.
+            </p>
+
+            {/* ✅ CONNECTED TO SKILL PAGE */}
+            <Link to="/skills">
+              <Button className="bg-blue-700 text-white px-6 py-3 text-lg rounded-lg hover:bg-blue-800">
+                Become a Mentee
+              </Button>
+            </Link>
+          </div>
         </div>
 
-        {/* Apply Section */}
-        <div className="bg-blue-600 text-white rounded-2xl p-8 md:p-12 text-center">
-          <h3 className="text-2xl md:text-3xl font-bold mb-4">
-            Apply for Mentorship
-          </h3>
-          <p className="max-w-xl mx-auto mb-6">
-            Join our mentorship program and begin your journey toward leadership,
-            financial growth, and purpose-driven success.
-          </p>
-          <a
-            href="https://chat.whatsapp.com/JL6fsvqSshrAGbByW2K80Z"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button className="bg-white text-blue-700 hover:bg-blue-100 px-6 py-3 text-lg">
-              Apply Now
-            </Button>
-          </a>
-        </div>
+        {/* ===================== MENTOR FORM ===================== */}
+        {openMentorForm && (
+          <Modal title="Become a Mentor" onClose={() => setOpenMentorForm(false)}>
+            <input type="text" placeholder="Full Name" className="input" />
+            <input type="email" placeholder="Email Address" className="input" />
+            <input type="text" placeholder="Phone Number" className="input" />
+            <input type="text" placeholder="Area of Expertise" className="input" />
+            <textarea placeholder="Why do you want to become a mentor?" className="input h-24" />
+            <textarea placeholder="Tell us about your experience" className="input h-24" />
+            <SubmitButton />
+          </Modal>
+        )}
 
       </div>
     </section>
   );
 };
+
+/* ===================== MODAL ===================== */
+const Modal = ({ title, children, onClose }: any) => (
+  <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div className="bg-white rounded-2xl p-6 w-full max-w-lg shadow-xl relative space-y-4">
+      <button onClick={onClose} className="absolute top-3 right-3 text-gray-500 hover:text-black">
+        ✕
+      </button>
+      <h2 className="text-xl font-bold text-center">{title}</h2>
+      {children}
+    </div>
+  </div>
+);
+
+/* ===================== BUTTON ===================== */
+const SubmitButton = () => (
+  <Button className="w-full bg-blue-700 text-white py-3 rounded-lg hover:bg-blue-800">
+    Submit Application
+  </Button>
+);
 
 export default Mentoring;

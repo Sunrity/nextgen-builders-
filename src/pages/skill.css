@@ -16,8 +16,8 @@
 .sidebar {
   position: fixed;
   top: 0;
-  left: -320px;
-  width: 300px;
+  left: -340px;
+  width: 320px;
   height: 100%;
   background: #f8fafc;
   padding: 24px 18px;
@@ -39,14 +39,48 @@
   backdrop-filter: blur(2px);
   z-index: 50;
 }
+.header{
+  margin-top: 30px;
+}
 
 /* ===== Sidebar Title ===== */
 .sidebar-title {
   font-size: 1.6rem;
   font-weight: 700;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
   text-align: center;
   color: #111827;
+}
+
+/* ===== Category Tabs ===== */
+.categories {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+.category-btn {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #374151;
+  background: #e5e7eb;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.category-btn.active {
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.category-btn:hover {
+  background: #dbeafe;
 }
 
 /* ===== Courses ===== */
@@ -99,7 +133,7 @@
 .topics-list {
   margin-top: 10px;
   list-style: none;
-  padding-left: 10px;
+  padding-left: 12px;
   border-left: 2px solid #e5e7eb;
 }
 
@@ -128,11 +162,17 @@
 }
 
 /* ===== Instructors Grid ===== */
+.instructors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
 .instructors-grid img {
   width: 100%;
   height: 220px;
   object-fit: cover;
-  object-position: top; /* Keeps faces visible */
+  object-position: top;
   border-radius: 14px;
   transition: transform 0.3s ease;
 }
@@ -141,23 +181,39 @@
   transform: scale(1.05);
 }
 
-
 /* ===== Google Form Section ===== */
 .google-form-section {
-  display: flex;           /* Enable flexbox */
-  justify-content: center; /* Center horizontally */
-  align-items: center;     /* Center vertically */
-  flex-direction: column;  /* Stack elements vertically if you have headings */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   padding: 4rem 1rem;
   text-align: center;
-  min-height: 60vh;        /* Ensures vertical centering space */
+  min-height: 60vh;
 }
 
 .google-form-section iframe {
-  width: 640px;            /* Or max-width: 100% for responsiveness */
+  width: 640px;
   max-width: 100%;
-  height: 1344px;          /* Keep your form height */
+  height: 1344px;
   border-radius: 14px;
   border: none;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 260px;
+    padding: 20px 14px;
+  }
+
+  .categories {
+    flex-direction: column;
+  }
+
+  .category-btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
 }

@@ -3,17 +3,85 @@
 import { useState, useEffect } from "react";
 import "./skill.css";
 
-/* REGISTRATION TIMER */
-const REGISTRATION_END = new Date();
-REGISTRATION_END.setDate(REGISTRATION_END.getDate() + 30);
+/* REGISTRATION DATES */
+const REGISTRATION_START = new Date("2026-04-01T00:00:00"); // April 1st start
+const REGISTRATION_END = new Date("2026-04-30T23:59:59");   // April 30th end
 
 /* COURSES */
-const courses = [
-  { name: "Web Development", duration: "12 weeks", topics: ["HTML", "CSS", "JavaScript", "React", "Node.js"] },
-  { name: "UI/UX Design", duration: "10 weeks", topics: ["Design Principles", "Wireframing", "Prototyping", "Figma", "User Testing"] },
-  { name: "Cybersecurity", duration: "14 weeks", topics: ["Network Security", "Cryptography", "Ethical Hacking", "Incident Response"] },
-  { name: "Data Analytics", duration: "8 weeks", topics: ["Excel", "SQL", "Python", "Data Visualization", "Machine Learning Basics"] },
-];
+const courses = {
+  foundation: [
+    {
+      name: "Mindset Development",
+      duration: "Ongoing",
+      topics: [
+        "Growth vs Fixed Mindset",
+        "Building Self-Discipline",
+        "Overcoming Fear and Doubt",
+        "Confidence Building",
+        "Consistency and Daily Habits",
+        "Goal Setting and Vision",
+        "Time Management",
+        "Handling Failure and Rejection",
+        "Positive Thinking and Gratitude",
+        "Leadership Mindset",
+      ],
+    },
+    {
+      name: "Leadership Development",
+      duration: "10 weeks",
+      topics: ["Leadership Principles", "Communication Skills", "Decision Making", "Team Building", "Emotional Intelligence"],
+    },
+    {
+      name: "Personal Development",
+      duration: "Ongoing",
+      topics: ["Self Awareness", "Goal Setting", "Daily Habits", "Discipline", "Productivity"],
+    },
+  ],
+  tech: [
+    {
+      name: "Web Development",
+      duration: "12 weeks",
+      topics: ["HTML", "CSS", "JavaScript", "React", "Node.js"],
+    },
+    {
+      name: "UI/UX Design",
+      duration: "10 weeks",
+      topics: ["Design Principles", "Wireframing", "Prototyping", "Figma", "User Testing"],
+    },
+    {
+      name: "Cybersecurity",
+      duration: "14 weeks",
+      topics: ["Network Security", "Cryptography", "Ethical Hacking", "Incident Response"],
+    },
+    {
+      name: "Data Analytics",
+      duration: "8 weeks",
+      topics: ["Excel", "SQL", "Python", "Data Visualization", "Machine Learning Basics"],
+    },
+  ],
+  business: [
+    {
+      name: "Digital Marketing",
+      duration: "8 weeks",
+      topics: ["Social Media Marketing", "Content Creation", "SEO Basics", "Email Marketing", "Facebook & Google Ads"],
+    },
+    {
+      name: "Entrepreneurship",
+      duration: "8 weeks",
+      topics: ["Business Ideas", "Problem Solving", "Starting a Business", "Branding", "Scaling"],
+    },
+    {
+      name: "Financial Literacy",
+      duration: "6 weeks",
+      topics: ["Money Management", "Saving & Budgeting", "Investing Basics", "Multiple Income Streams", "Building Wealth"],
+    },
+    {
+      name: "Freelancing",
+      duration: "4 weeks",
+      topics: ["Getting Clients", "Upwork & Fiverr", "Building Portfolio", "Pricing", "Client Communication"],
+    },
+  ],
+};
 
 /* INSTRUCTORS */
 const instructors = [
@@ -24,23 +92,28 @@ const instructors = [
 ];
 
 const PremiumSkillPage = () => {
-  const [timeLeft, setTimeLeft] = useState("");
+  const [timeStatus, setTimeStatus] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [openTopics, setOpenTopics] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = useState<"foundation" | "tech" | "business">("foundation");
 
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
-      const distance = REGISTRATION_END.getTime() - now.getTime();
-      if (distance <= 0) {
-        setTimeLeft("Closed");
+
+      if (now < REGISTRATION_START) {
+        const distanceToStart = REGISTRATION_START.getTime() - now.getTime();
+        const days = Math.floor(distanceToStart / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distanceToStart / (1000 * 60 * 60)) % 24);
+        setTimeStatus(`Registration starts in: ${days}d ${hours}h`);
+      } else if (now >= REGISTRATION_START && now <= REGISTRATION_END) {
+        setTimeStatus("Registration is ongoing");
+      } else {
+        setTimeStatus("Registration closed");
         clearInterval(timer);
-        return;
       }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-      setTimeLeft(`${days}d ${hours}h`);
     }, 1000);
+
     return () => clearInterval(timer);
   }, []);
 
@@ -50,13 +123,13 @@ const PremiumSkillPage = () => {
 
   return (
     <div className="layout">
-      {/* VIEW COURSES BUTTON */}
+      {/* HEADER */}
       <header className="header text-center py-16 bg-blue-50">
         <h1 className="text-4xl font-bold mb-2">Next Generation Builders</h1>
         <h2 className="text-2xl font-semibold mb-2">Next Gen Tech Skills Scholarship</h2>
-        <p className="text-gray-700 mb-4">Learn Data Analytics & Web Development, Level Up Your Skills</p>
+        <p className="text-gray-700 mb-4">Level Up Your Skills: Foundation, Tech & Business</p>
         <p className="text-gray-800 font-semibold mb-6">
-          Registration ends in: <span className="text-blue-700">{timeLeft}</span>
+          <span className={`text-blue-700 ${timeStatus === "Registration closed" ? "text-red-600" : ""}`}>{timeStatus}</span>
         </p>
         <button
           onClick={() => setSidebarOpen(true)}
@@ -69,12 +142,35 @@ const PremiumSkillPage = () => {
       {/* SIDEBAR */}
       {sidebarOpen && <div className="overlay" onClick={() => setSidebarOpen(false)} />}
       <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
-        <h2 className="sidebar-title">Courses</h2>
+        <h2 className="sidebar-title text-xl font-bold mb-4">Courses</h2>
+
+        {/* CATEGORY TABS */}
+        <div className="categories flex justify-between mb-4">
+          <button
+            className={`category-btn ${activeCategory === "foundation" ? "active" : ""}`}
+            onClick={() => setActiveCategory("foundation")}
+          >
+            Foundation
+          </button>
+          <button
+            className={`category-btn ${activeCategory === "tech" ? "active" : ""}`}
+            onClick={() => setActiveCategory("tech")}
+          >
+            Tech
+          </button>
+          <button
+            className={`category-btn ${activeCategory === "business" ? "active" : ""}`}
+            onClick={() => setActiveCategory("business")}
+          >
+            Business
+          </button>
+        </div>
+
         <ul className="course-list">
-          {courses.map((course) => (
+          {courses[activeCategory].map((course) => (
             <li key={course.name} className="course-item">
               <div className="course-header">
-                <span className="course-name">{course.name}</span>
+                <span className="course-name font-semibold">{course.name} ({course.duration})</span>
                 <button className="topics-btn" onClick={() => toggleTopics(course.name)}>
                   {openTopics === course.name ? "▲" : "▼"}
                 </button>
@@ -84,7 +180,9 @@ const PremiumSkillPage = () => {
                   {course.topics.map((topic) => (
                     <li key={topic} className="topic">{topic}</li>
                   ))}
-                  <button className="apply-btn mt-2">Apply for this course</button>
+                  <button className="apply-btn mt-2 bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">
+                    Apply for this course
+                  </button>
                 </ul>
               )}
             </li>

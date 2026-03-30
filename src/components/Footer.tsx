@@ -1,22 +1,45 @@
-import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+"use client";
+
+import { Mail, Phone, Facebook, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
+    const sponsors = [
+        { name: "Rescaf", logo: "/partners/rescaf.jpg" },
+        { name: "Scitylana", logo: "/partners/Scitylana.jpg" },
+        { name: "8cousins", logo: "/sponsors/8cousins.png" },
+    ];
+
     return (
         <footer className="bg-[#0B132B] text-gray-300 py-14 border-t border-white/10">
             <div className="max-w-7xl mx-auto px-6 md:px-10">
-                <div className="flex flex-col md:flex-row items-start justify-start gap-10 md:gap-20">
-                    {/* Brand Info */}
-                    <section className="sponsors-section">
-                        <h2 className="sponsors-title">Our Sponsors</h2>
-                        <p className="sponsors-sub">Next Generation Builders is proudly supported by:</p>
-                        <ul className="sponsors-list">
-                            <li className="sponsor">Rescaf</li>
-                            <li className="sponsor">Scitylana</li>
-                            <li className="sponsor">8cousins</li>
-                        </ul>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-20">
+
+                    {/* Sponsors Section */}
+                    <section className="sponsors-section col-span-1 md:col-span-1">
+                        <h2 className="text-xl font-bold text-white mb-2">Our Sponsors</h2>
+                        <p className="text-gray-400 mb-4">Proudly supported by:</p>
+                        <div className="sponsors-grid grid grid-cols-2 gap-4">
+                            {sponsors.map((sponsor) => (
+                                <div
+                                    key={sponsor.name}
+                                    className="sponsor-card hover:bg-white/20 transition p-4 rounded-lg flex items-center justify-center"
+                                >
+                                    {sponsor.logo ? (
+                                        <img
+                                            src={sponsor.logo}
+                                            alt={sponsor.name}
+                                            className="h-12 object-contain"
+                                        />
+                                    ) : (
+                                        <span className="text-white font-semibold">{sponsor.name}</span>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
                     </section>
 
-                    <div className="col-span-2">
+                    {/* Brand Info */}
+                    <div className="col-span-1 md:col-span-1">
                         <h3 className="text-2xl font-semibold text-white mb-3">
                             Next Generation <span className="text-blue-400">Builders</span>
                         </h3>
@@ -27,63 +50,56 @@ const Footer = () => {
                     </div>
 
                     {/* Contact Section */}
-                    <div>
+                    <div className="col-span-1 md:col-span-1">
                         <h4 className="text-lg font-semibold text-white mb-4">Contact</h4>
                         <ul className="space-y-3">
-
-                          <li className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-50 transition cursor-pointer">
-                                 <Phone size={18} className="text-blue-400 flex-shrink-0" />
-                                 <a
-                                        href="tel:+2349130961875"
-                                        className="text-blue-600 font-medium"
-                                    >
+                            <li className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-50 transition cursor-pointer">
+                                <Phone size={18} className="text-blue-400 flex-shrink-0" />
+                                <a href="tel:+2349130961875" className="text-blue-600 font-medium">
                                     +234-913-096-1875
                                 </a>
                             </li>
-
-                          
                             <li className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-50 transition cursor-pointer">
-                            <Phone size={18} className="text-blue-400 flex-shrink-0"/>
-                            <a
-                                href="tel:+2237013236152"
-                                className="text-blue-600 font-medium"
-                            >
-                            +223-701-323-6152
-                            </a>
+                                <Phone size={18} className="text-blue-400 flex-shrink-0" />
+                                <a href="tel:+2237013236152" className="text-blue-600 font-medium">
+                                    +223-701-323-6152
+                                </a>
                             </li>
-
-
                             <li>
-                            <a
-                                href="mailto:info@nextgenerationbuilders.org"
-                                className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-50 transition text-blue-600 font-medium"
-                            >
-                                <Mail size={18} className="text-blue-400 flex-shrink-0" />
-                               nextgenerationbuilders4@gmail.com
-                            </a>
+                                <a
+                                    href="mailto:nextgenerationbuilders4@gmail.com"
+                                    className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-50 transition text-blue-600 font-medium"
+                                >
+                                    <Mail size={18} className="text-blue-400 flex-shrink-0" />
+                                    nextgenerationbuilders4@gmail.com
+                                </a>
                             </li>
-
-                           <li>
-                            <a
-                                href="mailto:info@nextgenerationbuilders.org"
-                                className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-50 transition text-blue-600 font-medium"
-                            >
-                                <Mail size={18} className="text-blue-400 flex-shrink-0" />
-                                info@nextgenerationbuilders.org
-                            </a>
+                            <li>
+                                <a
+                                    href="mailto:info@nextgenerationbuilders.org"
+                                    className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-50 transition text-blue-600 font-medium"
+                                >
+                                    <Mail size={18} className="text-blue-400 flex-shrink-0" />
+                                    info@nextgenerationbuilders.org
+                                </a>
                             </li>
-                           
                         </ul>
                     </div>
 
                     {/* Social Links */}
-                    <div>
+                    <div className="col-span-1 md:col-span-1">
                         <h4 className="text-lg font-semibold text-white mb-4">Follow Us</h4>
                         <div className="flex items-center gap-5">
-                            <a href="https://web.facebook.com/profile.php?id=61586575755232" className="hover:text-blue-400 transition-colors">
+                            <a
+                                href="https://web.facebook.com/profile.php?id=61586575755232"
+                                className="hover:text-blue-400 transition-colors"
+                            >
                                 <Facebook size={20} />
                             </a>
-                            <a href="https://www.instagram.com/nextgenerationbuilders130925/" className="hover:text-blue-400 transition-colors">
+                            <a
+                                href="https://www.instagram.com/nextgenerationbuilders130925/"
+                                className="hover:text-blue-400 transition-colors"
+                            >
                                 <Instagram size={20} />
                             </a>
                             <a href="#" className="hover:text-blue-400 transition-colors">
