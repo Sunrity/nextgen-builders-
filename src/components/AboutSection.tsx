@@ -1,7 +1,7 @@
 // About.tsx
 import React from "react";
 import { motion } from "framer-motion";
-import aboutBg from "@/assets/about-bg.jpeg";
+// import aboutBg from "@/assets/about-bg.jpeg";
 
 const About: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ const About: React.FC = () => {
       
       {/* Background Image */}
       <img
-        src={aboutBg}
+        // src={aboutBg}
         alt="Next Generation Builders"
         className="absolute inset-0 w-full h-full object-cover opacity-80"
       />
