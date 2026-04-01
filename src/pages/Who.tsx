@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Target, Eye, Rocket, Heart, Globe2 } from "lucide-react";
-import bgImage from "..NGB-FAMILY.jpeg";
+import bgImage from "../assets/NGB-FAMILY.jpeg";
 
 
 const WhoPage = () => {
