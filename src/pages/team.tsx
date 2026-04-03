@@ -62,7 +62,7 @@ const TeamPage = () => {
       location: "Port Harcourt, Nigeria",
       image: "/testimonials/Jackson.jpg",
       testimonial:
-        "The mentorship and practical exercises helped me understand coding concepts more clearly and apply them in real projects.",
+        "The mentorship and hands-on exercises helped me improve my coding skills and apply them effectively in real projects.",
     },
     {
       name: "Omereji Success Sunday",
@@ -70,7 +70,7 @@ const TeamPage = () => {
       location: "Port Harcourt, Nigeria",
       image: "/testimonials/Success.jpg",
       testimonial:
-        "I have learned how to approach design challenges effectively and improve user experience in my projects.",
+        "I have learned to approach design challenges strategically and create better user experiences in my projects.",
     },
     {
       name: "Marion Sakwa",
@@ -78,8 +78,16 @@ const TeamPage = () => {
       location: "Nairobi, Kenya",
       image: "/testimonials/Rion.jpg",
       testimonial:
-        "The program has enhanced my business thinking and helped me plan better for my future startup ideas.",
+        "The program enhanced my business thinking and gave me clarity to plan and execute my startup ideas.",
     },
+    {
+      name: "Demaro Uduyork Wilfred",
+      role: "Front-end Developer",
+      location: "Port Harcourt, Nigeria",
+      image: "/testimonials/Demaro.jpeg",
+      testimonial:
+        "Through this program, I gained confidence in front-end development and can now build responsive and interactive web applications.",
+    }
   ];
 
   const instructors = [
@@ -105,10 +113,10 @@ const TeamPage = () => {
       testimonial: "I enjoy sharing practical skills that mentees can immediately apply and grow from."
     },
     { 
-      name: "Esther", 
+      name: "Folorunsho Esther", 
       course: "Data Analytics", 
-      location: "Abuja, Nigeria", 
-      image: "", 
+      location: "Lagos, Nigeria", 
+      image: "/Instructors/placeholder.jpg", // Use a placeholder if no image
       testimonial: "Helping mentees understand data and solve real problems motivates me every day."
     },
   ];
@@ -123,15 +131,15 @@ const TeamPage = () => {
     <div className="team-page bg-gray-50 text-gray-800">
 
       {/* ===================== HERO ===================== */}
-      <section className="py-20 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Meet Our Team</h1>
-        <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+      <section className="py-20 text-center bg-[url('/hero-bg.jpg')] bg-cover bg-center">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 light blue">Meet Our Team</h1>
+        <p className="light gray text-lg max-w-2xl mx-auto">
           Our mentors, mentees, and instructors are committed to building the next generation of leaders, innovators, and changemakers.
         </p>
       </section>
 
       {/* ===================== TABS ===================== */}
-      <div className="flex justify-center gap-4 mb-12">
+      <div className="flex justify-center gap-4 mb-12 mt-10">
         {tabs.map(tab => (
           <button
             key={tab.id}
@@ -162,20 +170,20 @@ const TeamPage = () => {
             transition={{ delay: idx * 0.1 }}
           >
             <Card className="p-6 text-center rounded-2xl shadow-lg hover:shadow-xl transition hover:scale-105">
-              <img
-                src={member.image || "https://via.placeholder.com/150"}
-                alt={member.name}
-                className="w-28 h-28 rounded-full mx-auto mb-4 object-cover"
-              />
+              <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full">
+                <img
+                  src={member.image || "https://via.placeholder.com/150"}
+                  alt={member.name}
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
               <h3 className="font-bold text-xl mb-1">{member.name}</h3>
               <p className="text-blue-600 font-semibold mb-1">
                 {activeTab === "instructors" ? member.course : member.role}
               </p>
               {member.location && <p className="text-blue-500 text-sm mb-2">{member.location}</p>}
               {(member.description || member.testimonial) && (
-                <p className="text-gray-600 text-sm">
-                  {member.description || member.testimonial}
-                </p>
+                <p className="text-gray-600 text-sm">{member.description || member.testimonial}</p>
               )}
             </Card>
           </motion.div>
