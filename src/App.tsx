@@ -13,6 +13,8 @@ import Partners from "./pages/partners";
 
 // Lazy-loaded Pages
 const Index = lazy(() => import("./pages/Index"));
+const Team = lazy(() => import("./pages/team"))
+const Qapage = lazy(() => import ("./pages/qapage"))
 const Who = lazy(() => import("./pages/Who"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Programs = lazy(() => import("./pages/Programs"));
@@ -42,8 +44,10 @@ const App: React.FC = () => {
           <Suspense fallback={<div className="loading">Loading...</div>}>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/team" element={<Team />} />
               <Route path="/who" element={<Who />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/qapage" element={<Qapage />} />
               <Route path="/programs" element={<Programs />} />
               <Route path="/community-guide" element={<Community />} />
               <Route path="/skills" element={<Skill />} />

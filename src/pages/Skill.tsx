@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import "./skill.css";
+import "../style/skill.css";
 
 /* REGISTRATION DATES */
 const REGISTRATION_START = new Date("2026-04-01T00:00:00"); // April 1st start

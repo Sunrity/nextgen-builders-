@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { Dropdown } from "react-day-picker";
 
 // Navigation links
 const navLinks = [
@@ -11,9 +12,17 @@ const navLinks = [
     dropdown: [
       { name: "Who we are", href: "/Who" },
       { name: "Contact", href: "/contact" },
-      { name: "Blog", href: "/blog" },
+      { name: "OurTeam", href: "/team"}
     ],
   },
+  {
+    name: "Resources",
+    dropdown: [
+      { name: "Blog", href: "/blog" },
+      { name: "FAQ", href: "qapage"}
+
+    ]
+    },
   {
     name: "Community",
     dropdown: [

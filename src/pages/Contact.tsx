@@ -60,9 +60,7 @@ ${formData.message}
           message: "",
         });
 
-        setTimeout(() => {
-          setSent(false);
-        }, 7000);
+        setTimeout(() => setSent(false), 7000);
       })
       .catch((error) => {
         console.error("Email send error:", error);
@@ -74,15 +72,9 @@ ${formData.message}
   const contactInfo = [
     {
       icon: <Phone className="w-5 h-5 text-blue-600" />,
-      title: "Customer Service (1)",
-      value: "0913-096-1875",
+      title: "Customer Support",
+      value: "0913-096-1875 / 0813-902-3970",
       href: "tel:+2349130961875",
-    },
-    {
-      icon: <Phone className="w-5 h-5 text-blue-600" />,
-      title: "Customer Service (2)",
-      value: "0813-902-3970",
-      href: "tel:+2348139023970",
     },
     {
       icon: <User className="w-5 h-5 text-blue-600" />,
@@ -92,29 +84,30 @@ ${formData.message}
     },
     {
       icon: <Mail className="w-5 h-5 text-blue-600" />,
-      title: "Email",
+      title: "Email Address",
       value: "nextgenerationbuilders4@gmail.com",
       href: "mailto:nextgenerationbuilders4@gmail.com",
     },
     {
       icon: <MapPin className="w-5 h-5 text-blue-600" />,
-      title: "Office",
+      title: "Location",
       value: "Port Harcourt, Nigeria",
       href: "#",
     },
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
+
         {/* Header */}
         <div className="text-center mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-5"
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
           >
-            Get in Touch
+            Contact Us
           </motion.h2>
 
           <motion.p
@@ -122,26 +115,29 @@ ${formData.message}
             animate={{ opacity: 1, y: 0 }}
             className="text-lg text-gray-600 max-w-2xl mx-auto"
           >
-            If you have questions about our mentoring programs, partnership
-            opportunities, or insights that could contribute to our growth,
-            we are here to guide and collaborate with you.
+            We’re open to partnerships, collaborations, and inquiries.
+            Reach out and our team will respond within 24–48 hours.
           </motion.p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
+
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            className="space-y-10"
+            className="space-y-8"
           >
             {contactInfo.map((info, i) => (
-              <div key={i} className="flex items-start gap-4">
+              <div
+                key={i}
+                className="flex items-start gap-4 bg-white p-5 rounded-xl shadow-sm border hover:shadow-md transition"
+              >
                 <div className="p-3 rounded-lg bg-blue-50">
                   {info.icon}
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900">
+                  <h4 className="text-md font-semibold text-gray-900">
                     {info.title}
                   </h4>
                   {info.href !== "#" ? (
@@ -159,15 +155,14 @@ ${formData.message}
             ))}
           </motion.div>
 
-          {/* Form or Success Message */}
+          {/* Form / Success */}
           {sent ? (
-            <div className="bg-green-50 border border-green-200 rounded-2xl p-10 text-center">
-              <h3 className="text-2xl font-semibold text-green-700 mb-3">
-                ✅ Message Sent Successfully!
+            <div className="bg-white border rounded-2xl p-10 text-center shadow-md">
+              <h3 className="text-2xl font-semibold text-green-600 mb-3">
+                Message Sent Successfully
               </h3>
-              <p className="text-gray-700">
-                Thank you for reaching out to Next Generation Builders.
-                We’ve received your message and will respond shortly.
+              <p className="text-gray-600">
+                Thank you for reaching out. Our team will get back to you shortly.
               </p>
             </div>
           ) : (
@@ -177,60 +172,86 @@ ${formData.message}
               animate={{ opacity: 1, x: 0 }}
               className="bg-white rounded-2xl shadow-lg p-8 space-y-6 border"
             >
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Full Name"
-                className="w-full border rounded-lg px-4 py-3"
-                required
-              />
+              {/* Name */}
+              <div>
+                <label className="text-sm font-medium text-gray-700">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full mt-1 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"
+                  required
+                />
+              </div>
 
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Email Address"
-                className="w-full border rounded-lg px-4 py-3"
-                required
-              />
+              {/* Email */}
+              <div>
+                <label className="text-sm font-medium text-gray-700">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full mt-1 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"
+                  required
+                />
+              </div>
 
-              <input
-                type="text"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="Phone Number"
-                className="w-full border rounded-lg px-4 py-3"
-              />
+              {/* Phone */}
+              <div>
+                <label className="text-sm font-medium text-gray-700">
+                  Phone Number
+                </label>
+                <input
+                  type="text"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full mt-1 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"
+                />
+              </div>
 
-              <select
-                name="gender"
-                value={formData.gender}
-                onChange={handleChange}
-                className="w-full border rounded-lg px-4 py-3"
-              >
-                <option value="">Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
+              {/* Gender */}
+              <div>
+                <label className="text-sm font-medium text-gray-700">
+                  Gender
+                </label>
+                <select
+                  name="gender"
+                  value={formData.gender}
+                  onChange={handleChange}
+                  className="w-full mt-1 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"
+                >
+                  <option value="">Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
 
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Write your message..."
-                rows={5}
-                className="w-full border rounded-lg px-4 py-3"
-                required
-              />
+              {/* Message */}
+              <div>
+                <label className="text-sm font-medium text-gray-700">
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={5}
+                  className="w-full mt-1 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"
+                  required
+                />
+              </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg"
+                className="w-full flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg transition"
               >
                 <Send className="w-4 h-4" />
                 {loading ? "Sending..." : "Send Message"}

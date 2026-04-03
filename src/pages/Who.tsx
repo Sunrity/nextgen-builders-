@@ -2,22 +2,22 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Target, Eye, Rocket, Heart, Globe2 } from "lucide-react";
+import { Target, Eye, Globe2 } from "lucide-react";
 import bgImage from "../assets/NGB-FAMILY.jpeg";
-
+import "/src/style/who.css";
 
 const WhoPage = () => {
   return (
     <div className="bg-white text-gray-800">
 
-      {/* ================= HERO SECTION ================= */}
+      {/* ================= HERO ================= */}
       <section className="relative min-h-screen flex items-center justify-center text-center text-white overflow-hidden">
         <img
           src={bgImage}
           alt="Background"
           className="absolute inset-0 w-full h-full object-cover opacity-30"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90" />
+        <div className="absolute inset-0 hero-overlay" />
 
         <div className="relative z-10 px-6 max-w-4xl">
           <motion.h1
@@ -32,7 +32,7 @@ const WhoPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-lg md:text-xl text-gray-200 leading-relaxed"
+            className="text-lg md:text-xl text-gray-200"
           >
             Next Generation Builders is a movement dedicated to raising young
             leaders equipped with the mindset, skills, and values needed to
@@ -44,116 +44,79 @@ const WhoPage = () => {
       {/* ================= MISSION & VISION ================= */}
       <section className="py-20 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
 
-        {/* Mission */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="bg-white shadow-lg rounded-2xl p-8 border"
+          className="card-hover bg-white rounded-2xl p-8 border soft-shadow"
         >
           <Target className="text-blue-600 mb-4" size={40} />
           <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
-          <p className="text-gray-600 leading-relaxed">
-            To empower young people with the right mindset, practical skills,
-            and leadership capacity to become builders of impact in their
-            communities and beyond.
+          <p className="text-gray-600">
+            We empower young people with the mindset, discipline, and faith for lasting success, equip them with financial wisdom and practical skills to build sustainable companies, nurture leaders of excellence, integrity, and innovation, and foster a strong community of nation-builders who create positive impact in families, communities, and the world.
           </p>
         </motion.div>
 
-        {/* Vision */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-white shadow-lg rounded-2xl p-8 border"
+          className="card-hover bg-white rounded-2xl p-8 border soft-shadow"
         >
           <Eye className="text-blue-600 mb-4" size={40} />
           <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
-          <p className="text-gray-600 leading-relaxed">
-            To raise a generation of purpose-driven leaders who innovate,
-            create opportunities, and transform Africa and the world.
+          <p className="text-gray-600">
+            To raise visionary leaders who create value, build sustainable companies, and transform nations.
           </p>
         </motion.div>
       </section>
 
-      {/* ================= AIM ================= */}
-      <section className="py-20 bg-blue-50 text-center px-6">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="max-w-3xl mx-auto"
-        >
-          <Rocket className="mx-auto text-blue-600 mb-4" size={45} />
-          <h2 className="text-3xl font-bold mb-6">Our Aim</h2>
-          <p className="text-gray-700 leading-relaxed text-lg">
-            Our aim is to equip individuals with the tools, mindset, and
-            opportunities needed to grow, lead, and build sustainable impact
-            in their personal lives, careers, and communities.
-          </p>
-        </motion.div>
-      </section>
+      {/* ================= IMPACT ================= */}
+      <section className="py-20 bg-gray-900 text-white px-6">
+        <div className="max-w-6xl mx-auto text-center">
 
-      {/* ================= VALUES ================= */}
-      <section className="py-20 px-6 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12">
-          Our Core Values
-        </h2>
+          <Globe2 className="mx-auto text-blue-400 mb-4" size={45} />
+          <h2 className="text-3xl font-bold mb-6">Our Impact</h2>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {/* Numbers Cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {[
+              { number: "15+", title: "Students Trained", desc: "Individuals who completed our programs." },
+              { number: "10+", title: "Employment", desc: "Participants who secured jobs or income." },
+              { number: "25+", title: "Engagement", desc: "Active participation in sessions." },
+              { number: "2+", title: "Projects", desc: "Real-world projects built." },
+            ].map((item, idx) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                className="impact-card p-6 rounded-2xl text-center"
+              >
+                <h3 className="text-4xl font-bold text-blue-600 mb-3">{item.number}</h3>
+                <h4 className="font-bold text-lg mb-2">{item.title}</h4>
+                <p className="text-gray-600 text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
 
-          {[
-            "Growth Mindset",
-            "Discipline & Consistency",
-            "Leadership",
-            "Innovation",
-            "Integrity",
-            "Impact-Driven Living",
-          ].map((value, idx) => (
-            <motion.div
-              key={value}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
-              className="bg-white p-6 rounded-2xl shadow hover:shadow-lg text-center"
-            >
-              <Heart className="mx-auto text-blue-600 mb-3" />
-              <p className="font-semibold">{value}</p>
-            </motion.div>
-          ))}
+          {/* Focus */}
+          <div className="glass-dark max-w-3xl mx-auto p-8 rounded-2xl">
+            <h3 className="text-2xl font-bold mb-4 text-blue-400">🔥 Our Focus</h3>
+            <p className="text-gray-300">
+              We don’t just count numbers — we build transformation. We are raising disciplined, confident, and skilled individuals ready to create value and lead.
+            </p>
+          </div>
 
         </div>
       </section>
 
-      {/* ================= IMPACT ================= */}
-      <section className="py-20 bg-gray-900 text-white text-center px-6">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="max-w-4xl mx-auto"
-        >
-          <Globe2 className="mx-auto text-blue-400 mb-4" size={45} />
-          <h2 className="text-3xl font-bold mb-6">Our Impact</h2>
-          <p className="text-gray-300 leading-relaxed text-lg">
-            Through mentorship, training, and community building, we are shaping
-            individuals who are not just skilled, but are prepared to lead,
-            innovate, and create real change in society.
-          </p>
-        </motion.div>
-      </section>
-
       {/* ================= CTA ================= */}
       <section className="py-20 text-center">
-        <motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="text-3xl font-bold mb-6"
-        >
-          Ready to Become a Builder?
-        </motion.h2>
+        <h2 className="text-3xl font-bold mb-6">
+          Step Into Your Purpose. Start Building Today.
+        </h2>
 
-        <Button
-          onClick={() => (window.location.href = "/skills")}
-          className="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg hover:bg-blue-700"
-        >
+        <Button className="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg">
           Explore Programs
         </Button>
       </section>
