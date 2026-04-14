@@ -1,24 +1,6 @@
-<p align="center">
-  <img src="/logo/logo.jpeg" alt="Next Generation Builders Logo" width="120" />
-</p>
-
-<h1 align="center">Next Generation Builders</h1>
-
-<p align="center">
-  Empowering African Youth through Mindset, Leadership & Skills 🚀
-</p>
-
-<p align="center">
-  <a href="https://nextgenerationbuilders.org"><strong>Visit Website</strong></a> •
-  <a href="#-getting-started-local-development">Get Started</a> •
-  <a href="#-contribution-guide">Contribute</a>
-</p>
-
----
-
 ## 🌍 About The Project
 
-**Next Generation Builders** is a mission-driven platform focused on raising a new generation of African leaders.
+**Alkebulan Foundation** is a mission-driven platform focused on raising a new generation of African leaders.
 
 We empower young people through:
 - 🧠 Mindset Development  

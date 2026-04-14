@@ -41,7 +41,7 @@ const Footer = () => {
                     {/* Brand Info */}
                     <div className="col-span-1 md:col-span-1">
                         <h3 className="text-2xl font-semibold text-white mb-3">
-                            Next Generation <span className="text-blue-400">Builders</span>
+                            <span className="text-blue-400">Alkebulan </span> Foundation
                         </h3>
                         <p className="text-gray-400 leading-relaxed max-w-md">
                             We empower young minds to grow into impactful leaders by blending mentorship,
@@ -62,28 +62,19 @@ const Footer = () => {
                             <li className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-50 transition cursor-pointer">
                                 <Phone size={18} className="text-blue-400 flex-shrink-0" />
                                 <a href="tel:+2237013236152" className="text-blue-600 font-medium">
-                                    +223-701-323-6152
+                                   +234-813-902-3970
                                 </a>
                             </li>
-                            <li>
+                          <li>
                                 <a
-                                    href="mailto:nextgenerationbuilders4@gmail.com"
+                                    href="mailto:alkebulanfoundation08@gmail.com"
                                     className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-50 transition text-blue-600 font-medium"
                                 >
                                     <Mail size={18} className="text-blue-400 flex-shrink-0" />
-                                    nextgenerationbuilders4@gmail.com
+                                    alkebulanfoundation08@gmail.com
                                 </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="mailto:info@nextgenerationbuilders.org"
-                                    className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-50 transition text-blue-600 font-medium"
-                                >
-                                    <Mail size={18} className="text-blue-400 flex-shrink-0" />
-                                    info@nextgenerationbuilders.org
-                                </a>
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
                     </div>
 
                     {/* Social Links */}
@@ -111,7 +102,7 @@ const Footer = () => {
 
                 {/* Bottom Bar */}
                 <div className="border-t border-white/10 mt-12 pt-6 text-center text-sm text-gray-500">
-                    © {new Date().getFullYear()} Next Generation Builders. All rights reserved.
+                    © {new Date().getFullYear()} Alkebulan Foundation. All rights reserved.
                 </div>
             </div>
         </footer>

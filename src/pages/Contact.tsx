@@ -85,8 +85,8 @@ ${formData.message}
     {
       icon: <Mail className="w-5 h-5 text-blue-600" />,
       title: "Email Address",
-      value: "nextgenerationbuilders4@gmail.com",
-      href: "mailto:nextgenerationbuilders4@gmail.com",
+      value: "alkebulanfoundation08@gmail.com",
+      href: " alkebulanfoundation08@gmail.com",
     },
     {
       icon: <MapPin className="w-5 h-5 text-blue-600" />,

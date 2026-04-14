@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Dropdown } from "react-day-picker";
+import logo from "../assets/logo.jpeg";
 
 // Navigation links
 const navLinks = [
@@ -54,9 +55,9 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         
         {/* Site Name instead of logo */}
-        <Link to="/" className="text-2xl font-bold text-gray-900">
-          Next <span className="text-blue-700">Gen</span> Builders
-        </Link>
+       <Link to="/" className="flex items-center">
+      <img src={logo} alt="Alkebulan Foundation Logo" className="h-14 w-auto" />
+      </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">

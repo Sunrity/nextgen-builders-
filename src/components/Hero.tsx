@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.5, duration: 1 }}
             className="mt-6 text-lg md:text-xl text-black-600 dark:text-black-300 max-w-3xl mx-auto leading-relaxed"
           >
-            Next Generation Builders transforms purpose-driven young minds
+           Alkebulan Foundation transforms purpose-driven young minds
             into visionary leaders — equipped with mindset, financial wisdom,
             faith, and creativity to build companies and shape tomorrow.
           </motion.p>
