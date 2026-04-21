@@ -7,12 +7,7 @@ const About: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white">
       
-      {/* Background Image */}
-      <img
-        // src={aboutBg}
-        alt="Next Generation Builders"
-        className="absolute inset-0 w-full h-full object-cover opacity-80"
-      />
+      
 
       {/* Overlay Gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/90 to-transparent" />

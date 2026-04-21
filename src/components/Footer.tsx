@@ -6,7 +6,7 @@ const Footer = () => {
     const sponsors = [
         { name: "Rescaf", logo: "/partners/rescaf.jpg" },
         { name: "Scitylana", logo: "/partners/Scitylana.jpg" },
-        { name: "8cousins", logo: "/sponsors/8cousins.png" },
+        { name: "8cousins", logo: "/partners/8c.png" },
     ];
 
     return (

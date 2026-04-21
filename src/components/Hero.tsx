@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Next Generation Builders Hero"
+          alt="Alkebulan Foundation"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/40 to-transparent dark:from-black/70 dark:via-black/50 dark:to-transparent" />
@@ -84,33 +84,9 @@ const Hero: React.FC = () => {
             >
               Learn more
             </Button>
-
-            {/* Admin Page Button (Optional) */}
-            {/* 
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => navigate("/admin")}
-              className="text-lg px-10 py-5 rounded-2xl border-indigo-500 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-100/60 dark:hover:bg-indigo-800/50 font-medium transition-all duration-300"
-            >
-              Admin Page
-            </Button> 
-            */}
           </motion.div>
         </div>
       </motion.div>
-
-      {/* Scroll Indicator */}
-      {/* <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 8, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-5 md:bottom-10 left-1/2 -translate-x-1/2"
-      >
-        <div className="w-[26px] h-[42px] border-2 border-gray-400/40 rounded-full flex justify-center p-1.5">
-          <div className="w-1.5 h-3 bg-gray-400/80 rounded-full animate-bounce"></div>
-        </div>
-      </motion.div> */}
     </section>
   );
 };

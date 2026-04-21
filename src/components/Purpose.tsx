@@ -38,35 +38,11 @@ const Purpose = () => {
                 "We strengthen moral and spiritual depth through biblical principles — raising value-driven leaders.",
             icon: <BookOpen size={40} className="text-cyan-400" />,
         },
-        // {
-        //     title: "Leadership Development",
-        //     description:
-        //         "We raise confident, selfless, and visionary leaders who influence their communities with integrity and innovation.",
-        //     icon: <Users size={40} className="text-cyan-400" />,
-        // },
-        // {
-        //     title: "Community Impact",
-        //     description:
-        //         "We foster a culture of service — empowering youths to initiate positive change within their communities.",
-        //     icon: <HeartHandshake size={40} className="text-cyan-400" />,
-        // },
-        // {
-        //     title: "Innovation & Creativity",
-        //     description:
-        //         "We encourage forward-thinking and problem-solving, helping young minds build ideas that shape the future.",
-        //     icon: <Lightbulb size={40} className="text-cyan-400" />,
-        // },
-        // {
-        //     title: "Career & Entrepreneurship",
-        //     description:
-        //         "We mentor youths to build careers and businesses that align with their purpose, passion, and long-term vision.",
-        //     icon: <Rocket size={40} className="text-cyan-400" />,
-        // },
+        
     ];
 
     return (
         <section className="relative py-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden">
-            {/* Decorative gradient blur */}
             <div className="absolute top-1/3 -left-20 w-80 h-80 bg-blue-500/10 blur-3xl rounded-full"></div>
             <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-indigo-400/10 blur-3xl rounded-full"></div>
 
