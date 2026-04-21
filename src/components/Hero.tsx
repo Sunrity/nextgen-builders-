@@ -3,14 +3,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-// import heroImage from "@/assets/hero-image.jpg"; // Make sure this file exists in src/assets/
 import heroImage from "@/assets/esther-hero.jpg"
 
 const Hero: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <section className="relative h-[150vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-10 via-white to-slate-100 dark:from-slate-50 dark:via-slate-900 dark:to-slate-950 ">
       
       {/* Background Image */}
       <div className="absolute inset-0">
@@ -42,7 +41,7 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.2, duration: 1 }}
             className="text-4xl md:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-tight"
           >
-            <span className="block mb-3 mt-6">Mentoring Young Leaders</span>
+            <span className="block">Mentoring Young Leaders</span>
             <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 bg-clip-text text-transparent">
               To Build the Future
             </span>
@@ -71,7 +70,7 @@ const Hero: React.FC = () => {
             <Button
               size="lg"
               onClick={() => navigate("/skills")}
-              className="text-lg px-10 py-5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-500 hover:from-indigo-500 hover:to-blue-600 text-white font-semibold shadow-lg shadow-blue-500/20 transition-all duration-300 hover:scale-[1.03]"
+              className="text-lg px-10 py-5 rounded-2xl border-gray-400/60 dark:text-gray-100 hover:bg-gray-100/60 dark:hover:bg-gray-800/50 font-medium transition-all duration-300"
             >
               Apply for Scholarship
             </Button>
@@ -79,10 +78,10 @@ const Hero: React.FC = () => {
             <Button
               variant="outline"
               size="lg"
-              onClick={() => navigate("/about")}
-              className="text-lg px-10 py-5 rounded-2xl border-gray-400/60 text-gray-800 dark:text-gray-100 hover:bg-gray-100/60 dark:hover:bg-gray-800/50 font-medium transition-all duration-300"
+              onClick={() => navigate("/contact")}
+               className="text-lg px-10 py-5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-500 hover:from-indigo-500 hover:to-blue-600 text-white font-semibold shadow-lg shadow-blue-500/20 transition-all duration-300 hover:scale-[1.03]"
             >
-              Learn more
+              Donate Now
             </Button>
           </motion.div>
         </div>

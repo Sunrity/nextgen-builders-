@@ -2,44 +2,41 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { User, Mail, Phone } from "lucide-react";
 
+/* ---------------- PARTNERS DATA (REDUCED CARDS) ---------------- */
 const partners = [
   {
     name: "Rescaf",
-    description: "Building innovative digital solutions and empowering young tech talents.",
+    description: "Innovating digital solutions for youth empowerment.",
     logo: "/partners/rescaf.jpg",
     website: "https://rescaf.io",
   },
   {
     name: "Scitylana",
-    description: "Supporting local tech communities and educational initiatives.",
+    description: "Supporting education and tech communities.",
     logo: "/partners/Scitylana.jpg",
     website: "https://www.scitylana.co.uk",
   },
   {
     name: "8Cousins",
-    description: "Investing in youth development and innovation projects.",
-    logo: "/partners/8cousins.png",
-    website: "https://example.com",
-  },
-  {
-    name: "MJ Netwood",
-    description: "Mentorship-driven tech community for young developers.",
-    logo: "/mj-next.webp",
-    website: "https://mjnextwoodglobal.com",
+    description: "Driving youth innovation and creativity.",
+    logo: "/partners/8c.png",
+    website: "https://8-cousins-digital-home.vercel.app/",
   },
 ];
 
-// Replace with your Google Apps Script Web App URL
+/* ---------------- GOOGLE SHEET ---------------- */
 const GOOGLE_SHEET_URL = "YOUR_WEB_APP_URL_HERE";
 
-// Organization Bank Details
+/* ---------------- ORGANIZATION ---------------- */
 const ORG_BANK_DETAILS = {
-  name: "NextGenBuilders",
+  name: "Alkebulan Foundation",
   bank: "First Bank of Nigeria",
   accountNumber: "123......",
 };
 
+/* ---------------- PAGE ---------------- */
 const PartnersPage = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -47,183 +44,215 @@ const PartnersPage = () => {
     organization: "",
     message: "",
   });
+
   const [submitted, setSubmitted] = useState(false);
   const [selectedWebsite, setSelectedWebsite] = useState<string | null>(null);
   const [selectedName, setSelectedName] = useState("");
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
+
     try {
       await fetch(GOOGLE_SHEET_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
-          organizationAccountName: ORG_BANK_DETAILS.name,
+          organization: "Alkebulan Foundation",
           bankName: ORG_BANK_DETAILS.bank,
           accountNumber: ORG_BANK_DETAILS.accountNumber,
         }),
       });
+
       setSubmitted(true);
       setFormData({ name: "", email: "", organization: "", message: "" });
+
       setTimeout(() => setSubmitted(false), 3000);
-    } catch (error) {
-      console.error("Error submitting form:", error);
+    } catch (err) {
+      console.error(err);
     }
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-6 sm:px-12 py-16 space-y-20">
-      {/* Contact Form */}
+    <section className="max-w-7xl mx-auto px-6 py-16 space-y-20">
+
+      {/* ---------------- FORM ---------------- */}
       <div className="max-w-3xl mx-auto bg-white shadow-xl rounded-2xl p-8">
-        <h2 className="text-3xl font-bold mb-2 text-center text-blue-700">
-          Partner With Us
+
+        <h2 className="text-3xl font-bold text-center text-blue-700">
+          Partner With Alkebulan Foundation
         </h2>
 
-        {/* Friendly Message */}
-        <p className="text-center text-gray-600 mb-6">
-          We believe in building strong partnerships that drive innovation and
-          growth. Reach out to us today and let’s create impact together.
+        <p className="text-center text-gray-600 mt-2 mb-6">
+          Let’s build impact together through innovation and collaboration.
         </p>
 
+        {/* SUCCESS */}
         {submitted && (
-          <div className="bg-green-100 text-green-700 p-4 mb-4 rounded-lg text-center font-medium">
-            Thank you! Your message has been sent successfully.
+          <div className="bg-green-100 text-green-700 p-3 mb-4 rounded-lg text-center">
+            Message sent successfully ✔
           </div>
         )}
 
+        {/* FORM */}
         <form onSubmit={handleSubmit} className="grid gap-4">
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
+
+          <input name="name" placeholder="Your Name"
+            className="p-3 border rounded-xl"
             value={formData.name}
             onChange={handleChange}
-            required
-            className="p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
+            required />
+
+          <input name="email" placeholder="Email"
+            className="p-3 border rounded-xl"
             value={formData.email}
             onChange={handleChange}
-            required
-            className="p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          />
-          <input
-            type="text"
-            name="organization"
-            placeholder="Organization Name"
+            required />
+
+          <input name="organization" placeholder="Organization"
+            className="p-3 border rounded-xl"
             value={formData.organization}
             onChange={handleChange}
-            required
-            className="p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          />
-          <textarea
-            name="message"
-            placeholder="Your Message"
+            required />
+
+          <textarea name="message" placeholder="Message"
+            className="p-3 border rounded-xl"
+            rows={4}
             value={formData.message}
             onChange={handleChange}
-            rows={5}
-            required
-            className="p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          />
-          <button
-            type="submit"
-            className="bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors"
-          >
+            required />
+
+          <button className="bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700">
             Send Message
           </button>
         </form>
 
-        {/* Organization Bank Details */}
-        <div className="mt-6 text-center text-gray-700 space-y-1">
-          <p>
-            <strong>Account Name:</strong> {ORG_BANK_DETAILS.name}
+        {/* ---------------- BANK DETAILS (CONTACT STYLE + SHORT MESSAGE) ---------------- */}
+        <div className="mt-10 space-y-4">
+
+          <h3 className="text-xl font-bold text-center">
+            Bank Details
+          </h3>
+
+          {/* Short Message */}
+          <p className="text-center text-gray-600 text-sm mb-2">
+            Every contribution you make helps us educate, empower, and transform lives across communities.
           </p>
-          <p>
-            <strong>Bank:</strong> {ORG_BANK_DETAILS.bank}
-          </p>
-          <p>
-            <strong>Account Number:</strong> {ORG_BANK_DETAILS.accountNumber}
-          </p>
+
+          {/* Account Name */}
+          <div className="flex gap-4 p-4 border rounded-xl hover:shadow-md transition">
+            <div className="p-3 bg-blue-50 rounded-lg">
+              <User className="text-blue-600" />
+            </div>
+            <div>
+              <p className="text-sm text-gray-500">Account Name</p>
+              <p className="font-medium">{ORG_BANK_DETAILS.name}</p>
+            </div>
+          </div>
+
+          {/* Bank */}
+          <div className="flex gap-4 p-4 border rounded-xl hover:shadow-md transition">
+            <div className="p-3 bg-blue-50 rounded-lg">
+              <Mail className="text-blue-600" />
+            </div>
+            <div>
+              <p className="text-sm text-gray-500">Bank Name</p>
+              <p className="font-medium">{ORG_BANK_DETAILS.bank}</p>
+            </div>
+          </div>
+
+          {/* Account Number */}
+          <div className="flex gap-4 p-4 border rounded-xl hover:shadow-md transition">
+            <div className="p-3 bg-blue-50 rounded-lg">
+              <Phone className="text-blue-600" />
+            </div>
+            <div>
+              <p className="text-sm text-gray-500">Account Number</p>
+              <p className="font-medium tracking-widest">
+                {ORG_BANK_DETAILS.accountNumber}
+              </p>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      {/* Partners Grid */}
+      {/* ---------------- PARTNERS (SMALLER CARDS) ---------------- */}
       <div>
-        <h2 className="text-3xl font-bold mb-8 text-center text-blue-700">
+
+        <h2 className="text-3xl font-bold text-center text-blue-700 mb-10">
           Our Partners
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {partners.map((partner, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: idx * 0.15 }}
-              className="bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-2xl shadow-2xl p-6 text-center hover:-translate-y-2 hover:shadow-3xl transition-transform"
-            >
-              <img
-                src={partner.logo}
-                alt={partner.name}
-                className="h-20 mx-auto mb-4 object-contain bg-white p-2 rounded-xl"
-              />
-              <h3 className="font-bold text-xl">{partner.name}</h3>
-              <p className="text-sm mt-2 text-blue-100">{partner.description}</p>
 
-              <div className="flex gap-3 justify-center mt-4 flex-wrap">
+        <div className="grid md:grid-cols-3 gap-6">
+
+          {partners.map((p, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-blue-600 text-white p-5 rounded-xl text-center"
+            >
+
+              <img
+                src={p.logo}
+                className="h-16 mx-auto mb-3 bg-white p-2 rounded-lg"
+              />
+
+              <h3 className="font-bold">{p.name}</h3>
+              <p className="text-sm text-blue-100 mt-1">
+                {p.description}
+              </p>
+
+              <div className="mt-3 flex justify-center gap-2">
+
                 <button
                   onClick={() => {
-                    setSelectedWebsite(partner.website);
-                    setSelectedName(partner.name);
+                    setSelectedWebsite(p.website);
+                    setSelectedName(p.name);
                   }}
-                  className="bg-white text-blue-600 px-5 py-2 rounded-xl text-sm font-semibold hover:bg-blue-100 transition-colors"
+                  className="bg-white text-blue-600 px-3 py-1 rounded-lg text-sm"
                 >
                   Preview
                 </button>
 
                 <a
-                  href={partner.website}
+                  href={p.website}
                   target="_blank"
-                  className="border border-white px-5 py-2 rounded-xl text-sm hover:bg-white hover:text-blue-600 transition-colors"
+                  className="border px-3 py-1 rounded-lg text-sm"
                 >
                   Visit
                 </a>
+
               </div>
             </motion.div>
           ))}
+
         </div>
       </div>
 
-      {/* Preview Modal */}
+      {/* ---------------- MODAL ---------------- */}
       {selectedWebsite && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-          <div className="bg-white w-full max-w-6xl h-[80vh] rounded-2xl overflow-hidden shadow-2xl">
-            <div className="flex justify-between items-center p-4 border-b">
-              <h3 className="font-semibold text-lg">{selectedName}</h3>
-              <button
-                onClick={() => setSelectedWebsite(null)}
-                className="text-red-500 font-bold text-xl"
-              >
-                ✕
-              </button>
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
+
+          <div className="bg-white w-full max-w-5xl h-[80vh] rounded-xl overflow-hidden">
+
+            <div className="p-3 flex justify-between border-b">
+              <h3>{selectedName}</h3>
+              <button onClick={() => setSelectedWebsite(null)}>✕</button>
             </div>
-            <iframe
-              src={selectedWebsite}
-              className="w-full h-full"
-              title={selectedName}
-            ></iframe>
+
+            <iframe src={selectedWebsite} className="w-full h-full" />
+
           </div>
+
         </div>
       )}
+
     </section>
   );
 };

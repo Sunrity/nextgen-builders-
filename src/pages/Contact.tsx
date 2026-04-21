@@ -1,15 +1,15 @@
+"use client";
+
 import { useState } from "react";
 import { Mail, Phone, MapPin, User, Send } from "lucide-react";
-import { motion } from "framer-motion";
 import { toast } from "react-hot-toast";
 import emailjs from "@emailjs/browser";
 
-const Contact = () => {
+const ContactDonatePage = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    gender: "",
     message: "",
   });
 
@@ -24,244 +24,175 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
 
-    const serviceID = "service_2kp849z";
-    const templateID = "template_imyvufy";
-    const publicKey = "YXrnHKPZfuuqtFedO";
-
-    const templateParams = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      gender: formData.gender,
-      message: `
-New Contact Message from Next Generation Builders
-
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Gender: ${formData.gender}
-
-Message:
-${formData.message}
-      `,
-    };
-
     emailjs
-      .send(serviceID, templateID, templateParams, publicKey)
+      .send(
+        "service_2kp849z",
+        "template_imyvufy",
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        },
+        "YXrnHKPZfuuqtFedO"
+      )
       .then(() => {
         toast.success("Message sent successfully!");
         setSent(true);
-
         setFormData({
           name: "",
           email: "",
           phone: "",
-          gender: "",
           message: "",
         });
 
-        setTimeout(() => setSent(false), 7000);
+        setTimeout(() => setSent(false), 5000);
       })
-      .catch((error) => {
-        console.error("Email send error:", error);
-        toast.error("Failed to send message. Try again.");
+      .catch(() => {
+        toast.error("Failed to send message.");
       })
       .finally(() => setLoading(false));
   };
 
-  const contactInfo = [
-    {
-      icon: <Phone className="w-5 h-5 text-blue-600" />,
-      title: "Customer Support",
-      value: "0913-096-1875 / 0813-902-3970",
-      href: "tel:+2349130961875",
-    },
-    {
-      icon: <User className="w-5 h-5 text-blue-600" />,
-      title: "Founder",
-      value: "0814-700-8005",
-      href: "tel:+2348147008005",
-    },
-    {
-      icon: <Mail className="w-5 h-5 text-blue-600" />,
-      title: "Email Address",
-      value: "alkebulanfoundation08@gmail.com",
-      href: " alkebulanfoundation08@gmail.com",
-    },
-    {
-      icon: <MapPin className="w-5 h-5 text-blue-600" />,
-      title: "Location",
-      value: "Port Harcourt, Nigeria",
-      href: "#",
-    },
-  ];
-
   return (
-    <section className="py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+    <div className="bg-gray-50 min-h-screen">
 
-        {/* Header */}
-        <div className="text-center mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
-          >
-            Contact Us
-          </motion.h2>
+      {/* HERO */}
+      <div className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white text-center py-16 px-6">
+        <h1 className="text-3xl md:text-5xl font-bold mt-20">
+          Contact & Support Us
+        </h1>
+        <p className="text-gray-200 mt-3 max-w-2xl mx-auto">
+          Get in touch, partner with us, or support our mission through donations.
+        </p>
+      </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
-          >
-            We’re open to partnerships, collaborations, and inquiries.
-            Reach out and our team will respond within 24–48 hours.
-          </motion.p>
+      {/* CONTENT */}
+      <div className="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-12">
+
+        {/* LEFT SIDE */}
+        <div className="space-y-8">
+
+          {/* CONTACT INFO */}
+          <div className="bg-white p-6 rounded-xl shadow space-y-5">
+
+            <h2 className="text-xl font-bold">Contact Information</h2>
+
+            <div className="flex items-center gap-3">
+              <Phone className="text-blue-600" />
+              <p>+234 913 096 1875 / +234 813 902 3970</p>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <User className="text-blue-600" />
+              <p>Founder: 0814 700 8005</p>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Mail className="text-blue-600" />
+              <p>alkebulanfoundation08@gmail.com</p>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <MapPin className="text-blue-600" />
+              <p>Port Harcourt, Nigeria</p>
+            </div>
+
+          </div>
+
+          {/* DONATION */}
+          <div className="bg-white p-6 rounded-xl shadow border">
+
+            <h2 className="text-xl font-bold mb-3 text-blue-600">
+              Support Our Mission
+            </h2>
+
+            <p className="text-gray-600 mb-4">
+              Your support is more than a donation, it is a lifeline that helps us empower communities, transform lives, and create lasting impact.
+            </p>
+
+            <div className="space-y-2 text-gray-700">
+              <p><strong>Bank:</strong> Zenith Bank</p>
+              <p><strong>Account:</strong> Alkebulan Foundation</p>
+              <p><strong>Account No:</strong> 0000000000</p>
+            </div>
+          </div>
+
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        {/* RIGHT SIDE - FORM */}
+        <div className="bg-white p-6 rounded-xl shadow">
 
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="space-y-8"
-          >
-            {contactInfo.map((info, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-4 bg-white p-5 rounded-xl shadow-sm border hover:shadow-md transition"
-              >
-                <div className="p-3 rounded-lg bg-blue-50">
-                  {info.icon}
-                </div>
-                <div>
-                  <h4 className="text-md font-semibold text-gray-900">
-                    {info.title}
-                  </h4>
-                  {info.href !== "#" ? (
-                    <a
-                      href={info.href}
-                      className="text-gray-600 hover:text-blue-700"
-                    >
-                      {info.value}
-                    </a>
-                  ) : (
-                    <p className="text-gray-600">{info.value}</p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </motion.div>
-
-          {/* Form / Success */}
           {sent ? (
-            <div className="bg-white border rounded-2xl p-10 text-center shadow-md">
-              <h3 className="text-2xl font-semibold text-green-600 mb-3">
-                Message Sent Successfully
+            <div className="text-center py-10">
+              <h3 className="text-green-600 text-xl font-bold">
+                Message Sent Successfully 🎉
               </h3>
-              <p className="text-gray-600">
-                Thank you for reaching out. Our team will get back to you shortly.
+              <p className="text-gray-600 mt-2">
+                We will get back to you shortly.
               </p>
             </div>
           ) : (
-            <motion.form
-              onSubmit={handleSubmit}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="bg-white rounded-2xl shadow-lg p-8 space-y-6 border"
-            >
-              {/* Name */}
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full mt-1 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"
-                  required
-                />
-              </div>
+            <form onSubmit={handleSubmit} className="space-y-4">
 
-              {/* Email */}
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full mt-1 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"
-                  required
-                />
-              </div>
+              <h2 className="text-xl font-bold mb-2">
+                Send a Message
+              </h2>
 
-              {/* Phone */}
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Phone Number
-                </label>
-                <input
-                  type="text"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full mt-1 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"
-                />
-              </div>
+              <input
+                name="name"
+                placeholder="Full Name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full p-3 border rounded-lg"
+                required
+              />
 
-              {/* Gender */}
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Gender
-                </label>
-                <select
-                  name="gender"
-                  value={formData.gender}
-                  onChange={handleChange}
-                  className="w-full mt-1 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"
-                >
-                  <option value="">Select Gender</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
-              </div>
+              <input
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full p-3 border rounded-lg"
+                required
+              />
 
-              {/* Message */}
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={5}
-                  className="w-full mt-1 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"
-                  required
-                />
-              </div>
+              <input
+                name="phone"
+                placeholder="Phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full p-3 border rounded-lg"
+              />
+
+              <textarea
+                name="message"
+                placeholder="Your message"
+                value={formData.message}
+                onChange={handleChange}
+                rows={5}
+                className="w-full p-3 border rounded-lg"
+                required
+              />
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg transition"
+                className="w-full bg-blue-700 text-white py-3 rounded-lg hover:bg-blue-800 transition flex justify-center items-center gap-2"
               >
-                <Send className="w-4 h-4" />
+                <Send size={16} />
                 {loading ? "Sending..." : "Send Message"}
               </button>
-            </motion.form>
+
+            </form>
           )}
+
         </div>
+
       </div>
-    </section>
+
+    </div>
   );
 };
 
-export default Contact;
+export default ContactDonatePage;

@@ -132,7 +132,7 @@ const TeamPage = () => {
 
       {/* ===================== HERO ===================== */}
       <section className="py-20 text-center bg-[url('/hero-bg.jpg')] bg-cover bg-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 light blue">Meet Our Team</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mt-20 light blue">Meet Our Team</h1>
         <p className="light gray text-lg max-w-2xl mx-auto">
           Our mentors, mentees, and instructors are committed to building the next generation of leaders, innovators, and changemakers.
         </p>
