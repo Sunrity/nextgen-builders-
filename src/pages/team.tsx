@@ -93,9 +93,16 @@ const TeamPage = () => {
   const instructors = [
     { 
       name: "Amb. Prince Igwe C.", 
+      course: "Skill Group Leader", 
+      location: "Port Harcourt, Nigeria", 
+      image: "public/Instructors/Prince-Igwe.jpg",
+      testimonial: "Leads and coordinates training sessions, guiding members to build practical skills, grow confidence, and apply what they learn for real impact."
+    },
+    { 
+      name: "John .", 
       course: "Graphics Designer", 
       location: "Port Harcourt, Nigeria", 
-      image: "/Instructors/Prince-Igwe.jpg",
+      image: "public/Instructors/John.jpeg",
       testimonial: "It’s fulfilling to help mentees discover their talents and build their confidence step by step."
     },
     { 
@@ -116,7 +123,7 @@ const TeamPage = () => {
       name: "Folorunsho Esther", 
       course: "Data Analytics", 
       location: "Lagos, Nigeria", 
-      image: "/Instructors/placeholder.jpg", // Use a placeholder if no image
+      image: "public/Instructors/Esther.jpg", // Use a placeholder if no image
       testimonial: "Helping mentees understand data and solve real problems motivates me every day."
     },
   ];
