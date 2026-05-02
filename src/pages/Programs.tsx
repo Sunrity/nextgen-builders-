@@ -56,7 +56,7 @@ const getNextSaturday8PM = (fromDate = new Date()) => {
 };
 
 const liveMeetingLink =
-  "https://calendar.app.google/GLYBC2E9NfzCtRaw6";
+  "https://calendar.app.google/PeEcnigtLzd4QizU9";
 
 const Programs = () => {
   const [timeLeft, setTimeLeft] = useState({});
