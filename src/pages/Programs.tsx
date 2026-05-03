@@ -34,21 +34,26 @@ const programs = [
 ];
 
 /* ===============================
-   MEETING LOGIC
+   TIMEZONE HELPERS
 ================================ */
-const getNextSaturday8PM = (fromDate = new Date()) => {
-  const date = new Date(fromDate);
+const getUserTimeZone = () =>
+  Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-  const day = date.getDay(); // 0 = Sunday, 6 = Saturday
+/* ===============================
+   GET NEXT SATURDAY 8PM (LOCALIZED)
+================================ */
+const getNextSaturday8PM = (now = new Date()) => {
+  const date = new Date(now);
+
+  const day = date.getDay();
   const daysUntilSaturday = (6 - day + 7) % 7;
 
   date.setDate(date.getDate() + daysUntilSaturday);
-  date.setHours(20, 0, 0, 0); // 8:00 PM
+  date.setHours(20, 0, 0, 0); // 8PM LOCAL TIME
 
-  const meetingEnd = new Date(date.getTime() + 90 * 60 * 1000); // 9:30 PM
+  const meetingEnd = new Date(date.getTime() + 90 * 60 * 1000);
 
-  // If past 9:30 PM on Saturday → move to next week
-  if (fromDate > meetingEnd) {
+  if (now > meetingEnd) {
     date.setDate(date.getDate() + 7);
   }
 
@@ -59,37 +64,44 @@ const liveMeetingLink =
   "https://calendar.app.google/PeEcnigtLzd4QizU9";
 
 const Programs = () => {
-  const [timeLeft, setTimeLeft] = useState({});
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
   const [meetingStatus, setMeetingStatus] = useState("upcoming");
+  const [timeZone, setTimeZone] = useState("");
 
   useEffect(() => {
+    setTimeZone(getUserTimeZone());
+
     const timer = setInterval(() => {
       const now = new Date();
 
-      const meetingStart = getNextSaturday8PM(now); // 8PM
-      const meetingEnd = new Date(meetingStart.getTime() + 90 * 60 * 1000); // 9:30PM
-      const joinTime = new Date(meetingStart.getTime() - 30 * 60 * 1000); // 7:30PM
+      const meetingStart = getNextSaturday8PM(now);
+      const meetingEnd = new Date(
+        meetingStart.getTime() + 90 * 60 * 1000
+      );
+      const joinTime = new Date(
+        meetingStart.getTime() - 30 * 60 * 1000
+      );
 
-      // 🔴 LIVE (8PM - 9:30PM)
       if (now >= meetingStart && now < meetingEnd) {
         setMeetingStatus("live");
-      }
-
-      // 🟢 JOIN PHASE (7:30PM - 8PM)
-      else if (now >= joinTime && now < meetingStart) {
+      } else if (now >= joinTime && now < meetingStart) {
         setMeetingStatus("join");
 
         const diff = meetingStart - now;
 
         setTimeLeft({
-          hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+          days: 0,
+          hours: Math.floor(diff / (1000 * 60 * 60)),
           minutes: Math.floor((diff / (1000 * 60)) % 60),
           seconds: Math.floor((diff / 1000) % 60),
         });
-      }
-
-      // 🔵 OUTSIDE MEETING → COUNTDOWN TO NEXT SATURDAY
-      else {
+      } else {
         setMeetingStatus("upcoming");
 
         const diff = meetingStart - now;
@@ -130,9 +142,14 @@ const Programs = () => {
           <p className="text-gray-600">
             Building skills, mindset, and leadership for the next generation.
           </p>
+
+          {/* 🌍 TIMEZONE DISPLAY */}
+          <p className="text-sm text-gray-500 mt-2">
+            Your Timezone: {timeZone}
+          </p>
         </div>
 
-        {/* JOIN SECTION (7:30 - 8:00 PM) */}
+        {/* JOIN */}
         {meetingStatus === "join" && (
           <div className="bg-white rounded-3xl shadow-lg p-10 mb-16 text-center">
             <h3 className="text-2xl font-bold mb-4">
@@ -154,7 +171,7 @@ const Programs = () => {
           </div>
         )}
 
-        {/* COUNTDOWN (OTHER TIMES) */}
+        {/* COUNTDOWN */}
         {meetingStatus === "upcoming" && (
           <div className="bg-white rounded-3xl shadow-lg p-10 mb-16 text-center">
             <h3 className="text-2xl font-bold mb-4">
@@ -174,7 +191,7 @@ const Programs = () => {
           </div>
         )}
 
-        {/* PROGRAMS GRID */}
+        {/* PROGRAMS */}
         <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {programs.map((program, index) => (
             <motion.div
